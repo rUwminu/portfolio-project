@@ -56,6 +56,21 @@ const FlavorSlider = () => {
         x: `-${scrollAmount + 1400}px`,
         ease: "power1.inOut",
       });
+
+      const tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".nutrition-section", // trigger off the next section entering
+          start: "top bottom", // when next section's top hits viewport bottom
+          end: "top top", // until it reaches center
+          scrub: true,
+          markers: true,
+        },
+      });
+
+      tl2.to(".flavor-section", {
+        xPercent: -70,
+        duration: 1,
+      });
     }
 
     const titleTl = gsap.timeline({
@@ -90,14 +105,14 @@ const FlavorSlider = () => {
       );
   });
 
-  useEffect(() => {
-    const handleResize = () => {
-      window.location.reload();
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     window.location.reload();
+  //   };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   return (
     <div ref={sliderRef} className="slider-wrapper">
@@ -181,7 +196,7 @@ const FlavorCard: React.FC<FlavorCardProps> = ({ name, color, rotation }) => {
         rotation,
       )}
     >
-      <GetBgSvg className="absolute bottom-0 " />
+      <GetBgSvg className="absolute bottom-0 left-1/2 -translate-x-1/2 max-h-full w-full" />
 
       <img src={GetDrinkImg} alt="flavor-ele" className="drinks" />
 
