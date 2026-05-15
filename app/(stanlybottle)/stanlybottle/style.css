@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.header-1 h1 .char,
+.tooltip .title .line,
+.tooltip .description .line {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.header-1 h1 .char > span,
+.tooltip .title .line > span,
+.tooltip .description .line > span {
+  position: relative;
+  display: block;
+  transform: translateY(100%);
+  will-change: transform;
+}
