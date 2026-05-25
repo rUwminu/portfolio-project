@@ -27,7 +27,7 @@ const IntroSection = () => {
       duration: 0.6,
       stagger: 0.1,
       ease: "power1.out",
-      delay: DELAY_SPLASH_SCREEN,
+      delay: DELAY_SPLASH_SCREEN + 0.5,
     });
 
     gsap.from(secondTitleSplit.chars, {
@@ -36,7 +36,7 @@ const IntroSection = () => {
       duration: 0.6,
       stagger: 0.1,
       ease: "power1.out",
-      delay: DELAY_SPLASH_SCREEN,
+      delay: DELAY_SPLASH_SCREEN + 0.5,
     });
 
     gsap.from(pMsgSplit.words, {
@@ -45,7 +45,7 @@ const IntroSection = () => {
       ease: "power1.inOut",
       duration: 1,
       stagger: 0.01,
-      delay: DELAY_SPLASH_SCREEN,
+      delay: DELAY_SPLASH_SCREEN + 0.5,
     });
 
     // Hero scroll out parallex
@@ -66,18 +66,18 @@ const IntroSection = () => {
   });
 
   return (
-    <section className="relative w-full h-dvh bg-black">
+    <section className="relative w-full h-dvh bg-white">
       <div className="hero-container w-full h-full px-4 sm:px-12 md:px-20 lg:px-32 py-56 sm:py-40 md:py-48 ">
         <div className="flex flex-col">
-          <h1 className="first-title text-white text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-semibold leading-28 sm:leading-32 md:leading-40 lg:leading-48 overflow-hidden">
+          <h1 className="first-title text-black text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-semibold leading-28 sm:leading-32 md:leading-40 lg:leading-48 overflow-hidden">
             feel
           </h1>
 
-          <h1 className="second-title text-white text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-semibold leading-28 sm:leading-32 md:leading-40 lg:leading-48 overflow-hidden">
+          <h1 className="second-title text-black text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-semibold leading-28 sm:leading-32 md:leading-40 lg:leading-48 overflow-hidden">
             better
           </h1>
 
-          <span className="p-message text-white text-sm md:text-base font-semibold ml-1 md:ml-4 mt-6 leading-5 overflow-hidden">
+          <span className="p-message text-black text-sm md:text-base font-semibold ml-1 md:ml-4 mt-6 leading-5 overflow-hidden">
             we have used plants for thousands of years in our search for better{" "}
             <br />
             wellness — stanly is charting the future of plant-based remedies

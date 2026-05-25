@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
@@ -135,9 +136,8 @@ const OverviewSection = () => {
   }
 
   useGSAP(() => {
-    const scrollAmount = window.innerWidth * 3;
+    const scrollAmount = window.innerWidth * 2.7;
 
-    const animeOptions = { duration: 1, ease: "power3.out", stagger: 0.025 };
     const header1Split = SplitText.create(".header-1 h1", {
       type: "chars",
     });
@@ -193,7 +193,7 @@ const OverviewSection = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".test-section",
-        start: "2% top",
+        start: "top top",
         end: `+=${scrollAmount}px`,
         scrub: 1,
         pin: true,
@@ -203,11 +203,11 @@ const OverviewSection = () => {
             modelRef.current.rotation.y = progress * Math.PI * 4;
           }
 
-          if (progress >= 0.02 && progress <= 0.3 && !infoVisible) {
+          if (progress >= 0.03 && progress <= 0.3 && !infoVisible) {
             info1Timeline.play();
             info2Timeline.play();
             infoVisible = true;
-          } else if ((progress < 0.02 || progress > 0.3) && infoVisible) {
+          } else if ((progress < 0.03 || progress > 0.3) && infoVisible) {
             info1Timeline.reverse();
             info2Timeline.reverse();
             infoVisible = false;
@@ -259,14 +259,38 @@ const OverviewSection = () => {
       "<",
     );
 
-    // Counter-translate: moves right at the same rate the section moves left
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".passiflora-section",
+        start: "top bottom", // when passiflora-section enters viewport bottom
+        end: "top 20%", // until it's 30% in — model invisible by then
+        scrub: 1,
+        onUpdate: ({ progress }) => {
+          if (modelRef.current) {
+            modelRef.current.rotation.y = Math.PI * 4 + progress * Math.PI * 2;
+          }
+        },
+      },
+    });
+
+    gsap.to(".circular-mask", {
+      backgroundColor: "#ffffff",
+      duration: 0.5,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".passiflora-section",
+        start: "top bottom",
+        end: "top 95%",
+        scrub: true,
+      },
+    });
 
     const cleanup = initThreeScene(modelContainerRef.current!);
     return () => cleanup?.();
   });
 
   return (
-    <section className="test-section relative w-full h-dvh bg-white">
+    <section className="test-section relative w-full h-screen bg-white ">
       {/* Always-centered overlay — lives inside the section, counter-animates */}
       <div
         ref={overlayRef}
@@ -274,8 +298,11 @@ const OverviewSection = () => {
       >
         <div className="relative w-full h-full">
           <div
-            className="circular-mask absolute top-0 left-0 w-full h-full bg-black z-1"
-            style={{ clipPath: "circle(0% at 50% 50%)" }}
+            className="circular-mask absolute top-0 left-0 w-full h-full  z-1"
+            style={{
+              clipPath: "circle(0% at 50% 50%)",
+              backgroundColor: "#000000",
+            }}
           />
 
           <div
@@ -292,7 +319,7 @@ const OverviewSection = () => {
                 <BatteryIcon className="icon-1 w-10 h-10 text-white" />
               </div>
 
-              <div className="seperator w-0 h-0.5 bg-zinc-500" />
+              <div className="seperator w-0 h-0.5 ml-auto bg-zinc-500 " />
 
               <div className="overflow-hidden">
                 <h2 className="title-1 text-5xl text-white">long life</h2>

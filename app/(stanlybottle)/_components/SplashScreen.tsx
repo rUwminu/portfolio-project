@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { cn } from "@/utils/cn";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/all";
+import { ScrollSmoother, SplitText } from "gsap/all";
 
 const words = [
   {
@@ -28,8 +28,6 @@ export default function SplashScreen() {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    document.body.style.overflow = "hidden";
-
     const tl = gsap.timeline();
 
     // curtains open
@@ -54,7 +52,7 @@ export default function SplashScreen() {
     const textTl = gsap.timeline({
       delay: 2,
       onComplete: () => {
-        document.body.style.overflow = "";
+        ScrollSmoother.get()?.paused(false);
         rootRef.current?.remove();
       },
     });
@@ -71,7 +69,7 @@ export default function SplashScreen() {
         type: "chars",
       });
       const chars = [...split.chars].reverse(); // right to left: last char first
-      const exitDuration = 0.05 * chars.length;
+      const exitDuration = 0.03 * chars.length;
 
       // set initial state
       gsap.set(`${wrapper} .fade-span`, { opacity: 0 });
@@ -110,9 +108,18 @@ export default function SplashScreen() {
             ease: "power2.in",
           },
           `<${exitDuration}`, // start with chars exit
-        );
+        )
+        .add(() => {}, "+=0");
     });
   });
+
+  useEffect(() => {
+    const smoother = ScrollSmoother.get();
+    smoother?.paused(true);
+    return () => {
+      smoother?.paused(false);
+    };
+  }, []);
 
   return (
     <div

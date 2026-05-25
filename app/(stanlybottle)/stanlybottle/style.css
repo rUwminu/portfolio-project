@@ -28,3 +28,47 @@ body::-webkit-scrollbar {
   transform: translateY(100%);
   will-change: transform;
 }
+
+.banner-grid {
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-areas:
+    "one"
+    "two"
+    "three"
+    "four"
+    "five"
+    "six "
+    "seven";
+}
+
+@media (min-width: 640px) {
+  .banner-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "one three "
+      "one two"
+      "six five "
+      "seven four";
+  }
+}
+
+@media (min-width: 768px) {
+  .banner-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "one three three"
+      "one two   five"
+      "six six   five"
+      "seven four four";
+  }
+}
+
+@media (min-width: 1056px) {
+  .banner-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "one two three three"
+      "one four  four  five"
+      "six six   seven five";
+  }
+}

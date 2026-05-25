@@ -25,11 +25,15 @@ const StanlyBottlelayout = ({ children }: { children: React.ReactNode }) => {
   });
 
   return (
-    <div className="bg-white">
+    <div className=" w-full h-full">
       <Header />
 
-      <div className="smooth-wrapper bg-white" ref={wrapperRef}>
-        <div className="smooth-content bg-white" ref={contentRef}>
+      <div className="smooth-wrapper bg-transparent" ref={wrapperRef}>
+        <div
+          className="body-bg smooth-content"
+          style={{ backgroundColor: "white" }}
+          ref={contentRef}
+        >
           {children}
         </div>
       </div>
