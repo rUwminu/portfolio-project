@@ -1,35 +1,12 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-}
-
-@theme {
-  --animate-bounce-in: bounceIn 1.25s ease-out both;
-
-  @keyframes bounceIn {
-    0% {
-      transform: scale(0);
-    }
-    25% {
-      transform: scale(1.4);
-    }
-    50% {
-      transform: scale(0.9);
-    }
-    73% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
 }

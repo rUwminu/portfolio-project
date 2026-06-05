@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@neondatabase/auth/ui/tailwind";
+
+* {
+  border-color: revert-layer;
+}
