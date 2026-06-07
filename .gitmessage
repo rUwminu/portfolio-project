@@ -1,0 +1,10 @@
+# Type: feat | fix | chore | refactor | docs | style | test
+
+feat:
+
+project: project-name
+
+changes:
+
+- What you have done?
+- Example: fixed a auth token invalid return
