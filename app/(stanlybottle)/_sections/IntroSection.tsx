@@ -67,7 +67,7 @@ const IntroSection = () => {
 
   return (
     <section className="relative w-full h-dvh bg-white">
-      <div className="hero-container w-full h-full px-4 sm:px-12 md:px-20 lg:px-32 py-56 sm:py-40 md:py-48 ">
+      <div className="hero-container flex items-center w-full h-full px-4 sm:px-12 md:px-20 lg:px-32">
         <div className="flex flex-col">
           <h1 className="first-title text-black text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-semibold leading-28 sm:leading-32 md:leading-40 lg:leading-48 overflow-hidden">
             feel

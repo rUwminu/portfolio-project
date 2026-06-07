@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 
-import BlackBottleBg from "../_assets/images/black-bottle-scene.webp";
+import BlackBottleBg from "../_assets/images/black-bottle.png";
 
 const FeatureSection = () => {
   useGSAP(() => {

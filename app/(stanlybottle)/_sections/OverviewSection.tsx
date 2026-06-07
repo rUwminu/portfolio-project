@@ -275,7 +275,7 @@ const OverviewSection = () => {
 
     gsap.to(".circular-mask", {
       backgroundColor: "#ffffff",
-      duration: 0.5,
+      duration: 0.6,
       ease: "power1.inOut",
       scrollTrigger: {
         trigger: ".passiflora-section",
