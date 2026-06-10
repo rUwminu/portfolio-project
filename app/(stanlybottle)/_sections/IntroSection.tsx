@@ -5,10 +5,17 @@ import { cn } from "@/utils/cn";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
+import { useMediaQuery } from "react-responsive";
+
+import BlackBottleBg from "../_assets/images/black-bottle.png";
 
 import { DELAY_SPLASH_SCREEN } from "../_constants";
 
 const IntroSection = () => {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 1024px)",
+  });
+
   useGSAP(() => {
     const firstTitleSplit = SplitText.create(`.first-title`, {
       type: "chars",
@@ -48,40 +55,85 @@ const IntroSection = () => {
       delay: DELAY_SPLASH_SCREEN + 0.5,
     });
 
-    // Hero scroll out parallex
-    const heroTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-container",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-        pin: true,
-      },
+    gsap.from(".image-bottle", {
+      yPercent: 80,
+      xPercent: 40,
+      opacity: 0,
+      rotate: 36,
+      ease: "power1.inOut",
+      duration: 1,
+      delay: DELAY_SPLASH_SCREEN,
     });
 
-    heroTl.to(".hero-container", {
-      yPercent: 40,
-      ease: "power1.inOut",
-    });
+    if (!isMobile) {
+      // Hero scroll out parallex
+      const heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero-container",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          pin: true,
+        },
+      });
+
+      heroTl.to(".hero-container", {
+        yPercent: 40,
+        ease: "power1.inOut",
+      });
+    } else {
+      // Hero scroll out parallex
+      const heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero-container",
+          start: "40% top",
+          end: "bottom top",
+          scrub: true,
+          pin: true,
+          markers: true,
+        },
+      });
+
+      heroTl.to(".hero-container", {
+        yPercent: 40,
+        ease: "power1.inOut",
+      });
+    }
   });
 
   return (
-    <section className="relative w-full h-dvh bg-white">
-      <div className="hero-container flex items-center w-full h-full px-4 sm:px-12 md:px-20 lg:px-32">
-        <div className="flex flex-col">
-          <h1 className="first-title text-black text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-semibold leading-28 sm:leading-32 md:leading-40 lg:leading-48 overflow-hidden">
+    <section className="relative w-full h-[calc(100vh+200px)] lg:h-dvh bg-white">
+      <div className="hero-container relative flex items-end justify-center lg:items-start lg:justify-start lg:flex-row w-full h-full px-4 sm:px-12 md:px-20 lg:px-32 xl:px-48 z-2">
+        <div className="flex flex-col pt-0 lg:pt-40 pb-24 lg:pb-0">
+          <h1 className="first-title text-black text-[8rem] lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] font-medium tracking-tight leading-28 lg:leading-32 xl:leading-40 2xl:leading-48 overflow-hidden">
             feel
           </h1>
 
-          <h1 className="second-title text-black text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-semibold leading-28 sm:leading-32 md:leading-40 lg:leading-48 overflow-hidden">
+          <h1 className="second-title text-black text-[8rem] lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] font-medium tracking-tight leading-28 lg:leading-32 xl:leading-40 2xl:leading-48 overflow-hidden">
             better
           </h1>
 
-          <span className="p-message text-black text-sm md:text-base font-semibold ml-1 md:ml-4 mt-6 leading-5 overflow-hidden">
-            we have used plants for thousands of years in our search for better{" "}
-            <br />
-            wellness — stanly is charting the future of plant-based remedies
+          <div className="hidden lg:flex">
+            <span className="p-message text-black text-sm md:text-base font-semibold ml-1 md:ml-4 mt-6 leading-5 overflow-hidden">
+              we have used plants for thousands of years in our search for
+              better
+              <br />
+              wellness — stanly is charting the future of plant-based remedies
+            </span>
+          </div>
+
+          <span className="lg:hidden p-message text-black text-sm text-center mt-2 font-medium  leading-5 overflow-hidden">
+            we have used plants for thousands of years in our <br /> search for
+            better wellness — stanly is charting <br /> the future of
+            plant-based remedies
           </span>
+        </div>
+
+        <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full z-0">
+          <img
+            src={BlackBottleBg.src}
+            className="image-bottle min-w-[1000px] lg:min-w-[1200px] lg:translate-x-[20%] -translate-y-48 lg:-translate-y-12 rotate-12 object-cover"
+          />
         </div>
       </div>
     </section>

@@ -57,7 +57,7 @@ const FeatureSection = () => {
   });
 
   return (
-    <section className="feature-section relative w-full h-dvh overflow-hidden">
+    <section className="feature-section relative w-full h-dvh overflow-hidden z-5">
       <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-2">
         <h1 className="text-overlay-review text-7xl text-center text-white text-nowrap font-medium leading-22">
           stanly measure the impact

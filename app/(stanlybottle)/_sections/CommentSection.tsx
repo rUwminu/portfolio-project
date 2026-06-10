@@ -31,7 +31,7 @@ const CommentSection = () => {
 
   return (
     <section className="comment-section relative flex items-center w-full h-dvh overflow-hidden">
-      <div className="comment-overlay absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-4 md:gap-6 border z-1">
+      <div className="comment-overlay absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-4 md:gap-6 z-1">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-medium tracking-tight">
           never drinking alone
         </h1>
