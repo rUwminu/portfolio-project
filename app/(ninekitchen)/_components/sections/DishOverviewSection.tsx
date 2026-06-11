@@ -68,10 +68,7 @@ const DishCard = ({
 }) => {
   return (
     <div
-      className={cn(
-        "relative min-h-56 overflow-hidden rounded-md group",
-        extendClass,
-      )}
+      className={cn("relative  overflow-hidden rounded-md group", extendClass)}
     >
       <Image
         src={image}

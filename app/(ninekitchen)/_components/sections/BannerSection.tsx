@@ -185,7 +185,7 @@ const CustomerRating: React.FC<CustomerRatingProps> = ({
   const users = [UserMale1, UserMale2, UserFemale1, UserMale3];
 
   return (
-    <div className={cn("relative border", wrapperClass)}>
+    <div className={cn("relative", wrapperClass)}>
       <motion.div
         className={cn(
           "flex items-center justify-start py-10 px-6 bg-orange-600 rounded-md",
