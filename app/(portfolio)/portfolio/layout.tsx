@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
+import { PortfolioProvider } from "../_context/PortfolioContext";
 
 import Header from "../_components/Header";
 import Navigation from "../_components/Navigation";
@@ -24,21 +25,23 @@ const Portfoliolayout = ({ children }: { children: React.ReactNode }) => {
   });
 
   return (
-    <div className=" w-full h-full">
-      <div className="smooth-wrapper bg-transparent" ref={wrapperRef}>
-        <div
-          className="portfolio-body-bg relative smooth-content w-full mx-auto px-2 md:px-4 outline-1"
-          style={{ backgroundColor: "white" }}
-          ref={contentRef}
-        >
-          <Header />
+    <PortfolioProvider>
+      <div className=" w-full h-full">
+        <div className="smooth-wrapper bg-transparent" ref={wrapperRef}>
+          <div
+            className="portfolio-body-bg relative smooth-content w-full mx-auto px-2 md:px-4 outline-1"
+            style={{ backgroundColor: "white" }}
+            ref={contentRef}
+          >
+            <Header />
 
-          {children}
+            {children}
 
-          <Navigation />
+            <Navigation />
+          </div>
         </div>
       </div>
-    </div>
+    </PortfolioProvider>
   );
 };
 

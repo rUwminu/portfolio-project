@@ -2,22 +2,26 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { usePortfolio } from "../_context/PortfolioContext";
 
 import { Button } from "@/components/ui/button";
-
-import { DELAY_SPLASH_SCREEN } from "../_constants";
 
 const Header = () => {
   const tagRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
+  const { registerSplashComplete } = usePortfolio();
+
   useGSAP(() => {
-    gsap.from(".header-portfolio", {
-      yPercent: -200,
-      opacity: 0,
-      duration: 0.7,
-      ease: "power1.inOut",
-      delay: DELAY_SPLASH_SCREEN,
+    gsap.set(".header-portfolio", { yPercent: -200, opacity: 0 });
+
+    registerSplashComplete(() => {
+      gsap.to(".header-portfolio", {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power1.inOut",
+      });
     });
   });
 

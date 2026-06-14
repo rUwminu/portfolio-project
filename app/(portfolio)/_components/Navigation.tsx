@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { usePortfolio } from "../_context/PortfolioContext";
 
 import HamburgerMenuIcon from "@/assets/icons/HamburgerMenu.svg";
 
@@ -18,7 +19,28 @@ const Navigation = () => {
   const menuRef = useRef<HTMLDivElement>(null);
   const tickerRef = useRef<HTMLDivElement>(null);
 
+  const { registerSplashComplete, playTransition } = usePortfolio();
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleRedirectTo = (path: string) => {
+    setIsOpen(false); // Close menu
+
+    playTransition(); // Play Ovelay redirect
+  };
+
+  useGSAP(() => {
+    gsap.set(".nav-portfolio", { yPercent: 200, opacity: 0 });
+
+    registerSplashComplete(() => {
+      gsap.to(".nav-portfolio", {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power1.inOut",
+      });
+    });
+  });
 
   useEffect(() => {
     if (!menuRef.current) return;
@@ -61,13 +83,16 @@ const Navigation = () => {
 
   return (
     <div className="absolute bottom-0 left-0 w-full px-2 py-2 md:py-4">
-      <div className="flex flex-col w-full max-w-2xl p-2 mx-auto bg-zinc-900 rounded-2xl">
+      <div className="nav-portfolio flex flex-col w-full max-w-2xl p-2 mx-auto bg-zinc-900 rounded-2xl">
         <div
           className="grid overflow-hidden transition-all duration-300"
           style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
         >
           <div ref={menuRef} className="min-h-0 flex flex-col gap-4">
-            <div className="menu-item flex items-center gap-4 w-full h-20 md:h-22 shrink-0">
+            <div
+              className="menu-item flex items-center gap-4 w-full h-20 md:h-22 shrink-0 cursor-pointer"
+              onClick={() => handleRedirectTo("/portfolio")}
+            >
               <div className="flex items-center justify-center h-full aspect-square bg-white rounded-xl shrink-0">
                 <span className="text-lg text-zinc-900 font-semibold tracking-tighter">
                   . Ray
@@ -79,7 +104,10 @@ const Navigation = () => {
               </div>
             </div>
 
-            <div className="menu-item flex items-center gap-4 w-full h-20 md:h-22 shrink-0">
+            <div
+              className="menu-item flex items-center gap-4 w-full h-20 md:h-22 shrink-0 cursor-pointer"
+              onClick={() => handleRedirectTo("/portfolio/works")}
+            >
               <div className="flex items-center justify-center h-full aspect-square bg-white rounded-xl shrink-0">
                 <span className="text-lg text-zinc-900 font-semibold tracking-tighter">
                   Work
