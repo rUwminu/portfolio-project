@@ -82,7 +82,7 @@ const Navigation = () => {
   }, []);
 
   return (
-    <div className="absolute bottom-0 left-0 w-full px-2 py-2 md:py-4">
+    <div className="absolute bottom-2 left-0 w-full px-2 ">
       <div className="nav-portfolio flex flex-col w-full max-w-2xl p-2 mx-auto bg-zinc-900 rounded-2xl">
         <div
           className="grid overflow-hidden transition-all duration-300"

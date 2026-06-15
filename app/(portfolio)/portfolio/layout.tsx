@@ -29,7 +29,7 @@ const Portfoliolayout = ({ children }: { children: React.ReactNode }) => {
       <div className=" w-full h-full">
         <div className="smooth-wrapper bg-transparent" ref={wrapperRef}>
           <div
-            className="portfolio-body-bg relative smooth-content w-full mx-auto px-2 md:px-4 outline-1"
+            className="portfolio-body-bg relative smooth-content w-full mx-auto px-2 md:px-4 "
             style={{ backgroundColor: "white" }}
             ref={contentRef}
           >
