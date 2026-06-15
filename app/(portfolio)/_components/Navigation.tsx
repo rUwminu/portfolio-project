@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { usePortfolio } from "../_context/PortfolioContext";
+import { usePathname } from "next/navigation";
 
 import HamburgerMenuIcon from "@/assets/icons/HamburgerMenu.svg";
 
@@ -16,6 +17,8 @@ const base = [
 ];
 
 const Navigation = () => {
+  const pathname = usePathname();
+
   const menuRef = useRef<HTMLDivElement>(null);
   const tickerRef = useRef<HTMLDivElement>(null);
 
@@ -81,6 +84,13 @@ const Navigation = () => {
     });
   }, []);
 
+  const currentPageName = useMemo(() => {
+    if (pathname === "/portfolio") return "Home";
+    if (pathname.startsWith("/portfolio/works")) return "Work";
+
+    return "Home";
+  }, [pathname]);
+
   return (
     <div className="absolute bottom-2 left-0 w-full px-2 ">
       <div className="nav-portfolio flex flex-col w-full max-w-2xl p-2 mx-auto bg-zinc-900 rounded-2xl">
@@ -131,7 +141,7 @@ const Navigation = () => {
         <div className="flex items-center gap-4 w-full h-20 md:h-22">
           <div className="flex items-center justify-center h-full aspect-square bg-white rounded-xl shrink-0">
             <span className="text-lg text-zinc-900 font-semibold tracking-tighter">
-              Home
+              {currentPageName}
             </span>
           </div>
 

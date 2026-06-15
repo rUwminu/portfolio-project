@@ -58,7 +58,7 @@ const Header = () => {
           </span>
 
           <span className="text-lg md:text-xl text-zinc-900 font-medium leading-5">
-            Ray
+            . Ray
           </span>
         </div>
 
