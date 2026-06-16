@@ -4,12 +4,13 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { PortfolioProvider } from "../_context/PortfolioContext";
 
 import Header from "../_components/Header";
 import Navigation from "../_components/Navigation";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrambleTextPlugin);
 
 const Portfoliolayout = ({ children }: { children: React.ReactNode }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
