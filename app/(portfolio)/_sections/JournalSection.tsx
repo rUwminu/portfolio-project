@@ -5,7 +5,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { cn } from "@/utils/cn";
 
-import TestImage from "../_assets/images/nine-kitchen-site-1.png";
+import JobOneImage from "../_assets/images/chiga-site.png";
+import JobTwoImage from "../_assets/images/peoplex-site.png";
+import JobThreeImage from "../_assets/images/adams-site.png";
 
 const JournalSection = () => {
   useGSAP(() => {
@@ -33,9 +35,9 @@ const JournalSection = () => {
       </h1>
 
       <ExperienceCard
-        image={TestImage.src}
+        image={JobOneImage.src}
         jobTitle={"IT Support & Developer"}
-        jobCompany={"Harta Packaging"}
+        jobCompany={"Chiga Light"}
         year={"2021"}
         fromDate={"2021 Mar"}
         toDate={"2022 Feb"}
@@ -45,25 +47,25 @@ const JournalSection = () => {
       />
 
       <ExperienceCard
-        image={TestImage.src}
+        image={JobTwoImage.src}
         jobTitle={"Junior Software Engineer"}
         jobCompany={"Syntrino Solution (Adams.AI)"}
         year={"2022"}
-        fromDate={"2022 Apr"}
+        fromDate={"2022 May"}
         toDate={"2023 Dec"}
-        jobBadge={"CRM Saas"}
+        jobBadge={"PeopleX CRM Saas"}
         warpperName={"exp-2"}
         isReverse={true}
       />
 
       <ExperienceCard
-        image={TestImage.src}
+        image={JobThreeImage.src}
         jobTitle={"Senior Software Engineer"}
         jobCompany={"Adams.AI"}
         year={"2024"}
         fromDate={"2024 Jan"}
         toDate={"2026 Mar"}
-        jobBadge={"CRM Saas & Mobile"}
+        jobBadge={"Adams CRM Saas & Mobile"}
         warpperName={"exp-3"}
         isReverse={false}
       />
@@ -104,9 +106,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
       gsap.fromTo(
         cardRef.current.querySelector(".parallax-img"),
-        { yPercent: 20 },
+        { yPercent: -10 },
         {
-          yPercent: -20,
+          yPercent: 15,
           ease: "none",
           scrollTrigger: {
             trigger: cardRef.current,
@@ -146,7 +148,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         <div className="flex-1 w-full aspect-video bg-zinc-600 rounded-xl overflow-hidden">
           <img
             src={image}
-            className="parallax-img w-full h-full object-cover scale-120"
+            className="parallax-img w-full h-full object-fill scale-110"
             alt="company-img"
           />
         </div>
