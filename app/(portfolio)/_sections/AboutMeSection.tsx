@@ -48,7 +48,7 @@ const AboutMeSection = () => {
         ABOUT ME
       </h2>
 
-      <p className="param-text text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight mt-2 md:mt-4">
+      <p className="param-text text-xl sm:text-[3vw] font-medium tracking-tight leading-tight mt-2 md:mt-4">
         Passionate on merging design and engineering. I craft smooth,
         interactive experiences with purpose. With focus on performance, brands
         and goals, that bring digital product to life.
