@@ -4,10 +4,13 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { cn } from "@/utils/cn";
+import Link from "next/link";
 
 import JobOneImage from "../_assets/images/chiga-site.png";
 import JobTwoImage from "../_assets/images/peoplex-site.png";
 import JobThreeImage from "../_assets/images/adams-site.png";
+
+import ArrowUpRightIcon from "@/assets/icons/ArrowUpRight.svg";
 
 const JournalSection = () => {
   useGSAP(() => {
@@ -38,6 +41,9 @@ const JournalSection = () => {
         image={JobOneImage.src}
         jobTitle={"IT Support & Developer"}
         jobCompany={"Chiga Light"}
+        companyUrl={
+          "https://hartapack.com/about-us/subsidiary-profile/chiga-light-industries-sdn-bhd/"
+        }
         year={"2021"}
         fromDate={"2021 Mar"}
         toDate={"2022 Feb"}
@@ -50,6 +56,7 @@ const JournalSection = () => {
         image={JobTwoImage.src}
         jobTitle={"Junior Software Engineer"}
         jobCompany={"Syntrino Solution (Adams.AI)"}
+        companyUrl={"https://www.peoplex.ai/"}
         year={"2022"}
         fromDate={"2022 May"}
         toDate={"2023 Dec"}
@@ -62,6 +69,7 @@ const JournalSection = () => {
         image={JobThreeImage.src}
         jobTitle={"Senior Software Engineer"}
         jobCompany={"Adams.AI"}
+        companyUrl={"https://myadams.ai/"}
         year={"2024"}
         fromDate={"2024 Jan"}
         toDate={"2026 Mar"}
@@ -79,6 +87,7 @@ interface ExperienceCardProps {
   image: string;
   jobTitle: string;
   jobCompany: string;
+  companyUrl: string;
   year: string;
   fromDate: string;
   toDate: string;
@@ -91,6 +100,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   image,
   jobTitle,
   jobCompany,
+  companyUrl,
   year,
   fromDate,
   toDate,
@@ -154,11 +164,32 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         </div>
 
         <div
-          className={cn("flex-1 flex flex-col", isReverse ? "items-end" : "")}
+          className={cn(
+            "flex-1 flex flex-col",
+            isReverse ? "md:items-end" : "",
+          )}
         >
           <h2 className="text-2xl md:text-3xl mb-2 font-medium">{jobTitle}</h2>
 
-          <span className="md:text-lg">at {jobCompany}</span>
+          <div
+            className={cn(
+              "flex items-center gap-2",
+              isReverse ? "md:flex-row-reverse" : "",
+            )}
+          >
+            <span className="md:text-lg">at {jobCompany}</span>
+
+            <Link
+              className="flex items-center gap-1 w-fit pl-3 pr-3 py-1 bg-zinc-200 rounded-2xl "
+              href={companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="text-sm">Visit</span>
+
+              <ArrowUpRightIcon className="w-4 h-4 text-zinc-900" />
+            </Link>
+          </div>
 
           <span className="text-sm md:text-base">
             {fromDate} - {toDate}
