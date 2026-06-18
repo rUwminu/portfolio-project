@@ -9,6 +9,7 @@ import { PortfolioProvider } from "../_context/PortfolioContext";
 
 import Header from "../_components/Header";
 import Navigation from "../_components/Navigation";
+import Footer from "../_components/Footer";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrambleTextPlugin);
 
@@ -39,6 +40,8 @@ const Portfoliolayout = ({ children }: { children: React.ReactNode }) => {
             {children}
 
             <Navigation />
+
+            <Footer />
           </div>
         </div>
       </div>

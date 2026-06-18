@@ -6,6 +6,7 @@ import JournalSection from "../_sections/JournalSection";
 import ProjectSection from "../_sections/ProjectSection";
 import ProjectSkillSection from "../_sections/ProjectSkillSection";
 import TechStackSection from "../_sections/TechStackSection";
+import ThankSection from "../_sections/ThankSection";
 
 const page = () => {
   return (
@@ -22,7 +23,7 @@ const page = () => {
 
       <TechStackSection />
 
-      <section className="w-full h-dvh border"> Empty Section</section>
+      <ThankSection />
     </>
   );
 };
