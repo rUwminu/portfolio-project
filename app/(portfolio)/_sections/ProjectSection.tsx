@@ -3,7 +3,7 @@
 import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { usePortfolio } from "../_context/PortfolioContext";
 
 import ProjectCard from "../_components/ProjectCard";
@@ -46,6 +46,8 @@ const projects = [
 ];
 
 const ProjectSection = () => {
+  const route = useRouter();
+
   const { playTransition } = usePortfolio();
 
   useGSAP(() => {
@@ -114,17 +116,16 @@ const ProjectSection = () => {
       </div>
 
       <div className="flex items-center justify-center w-full">
-        <Link
-          href={"/portfolio/work"}
-          className="group flex items-center gap-2"
-          onClick={() => playTransition()}
+        <div
+          className="group flex items-center gap-2 cursor-pointer"
+          onClick={() => playTransition(() => route.push("/portfolio/works"))}
         >
           <span className="text-[clamp(20px,1.5vw,32px)] font-medium">
             See all
           </span>
 
           <ArrowDownIcon className="w-8 h-8 -rotate-90 text-zinc-900 group-hover:translate-x-4 transition-all duration-100" />
-        </Link>
+        </div>
       </div>
     </section>
   );

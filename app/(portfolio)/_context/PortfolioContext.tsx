@@ -6,8 +6,9 @@ import gsap from "gsap";
 import SplashScreen from "../_components/SplashScreen";
 
 interface PortfolioContextType {
-  playTransition: () => void;
-  registerSplashComplete: (fn: () => void) => void;
+  playTransition: (fn: () => void) => void;
+  registerSplashComplete: (fn: () => void) => () => void;
+  registerTransitionComplete: (fn: () => void) => () => void;
 }
 
 const PortfolioContext = createContext<PortfolioContextType | null>(null);
@@ -28,11 +29,27 @@ export const PortfolioProvider = ({
 
   const onSplashComplete = useRef<Array<() => void>>([]);
 
+  const onTransitionComplete = useRef<Array<() => void>>([]);
+
   const registerSplashComplete = (fn: () => void) => {
     onSplashComplete.current.push(fn);
+    return () => {
+      onSplashComplete.current = onSplashComplete.current.filter(
+        (f) => f !== fn,
+      );
+    };
   };
 
-  const playTransition = () => {
+  const registerTransitionComplete = (fn: () => void) => {
+    onTransitionComplete.current.push(fn);
+    return () => {
+      onTransitionComplete.current = onTransitionComplete.current.filter(
+        (f) => f !== fn,
+      );
+    };
+  };
+
+  const playTransition = (onCovered?: () => void) => {
     const el = overlayRef.current;
     if (!el) return;
 
@@ -41,19 +58,28 @@ export const PortfolioProvider = ({
       .timeline()
       .set(el, { pointerEvents: "auto" })
       .to(el, { opacity: 1, duration: 0.4, ease: "power2.out" })
+      .call(() => onCovered?.())
       .to(el, { opacity: 0, duration: 0.4, ease: "power2.in", delay: 1.5 })
-      .set(el, { pointerEvents: "none" });
+      .set(el, { pointerEvents: "none" })
+      .call(() => {
+        onTransitionComplete.current.forEach((fn) => fn());
+      });
   };
 
   return (
     <PortfolioContext.Provider
-      value={{ playTransition, registerSplashComplete }}
+      value={{
+        playTransition,
+        registerSplashComplete,
+        registerTransitionComplete,
+      }}
     >
       <SplashScreen
         onComplete={() => onSplashComplete.current.forEach((fn) => fn())}
       />
 
       <TransitionOverlay overlayRef={overlayRef} />
+
       {children}
     </PortfolioContext.Provider>
   );

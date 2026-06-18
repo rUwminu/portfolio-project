@@ -9,61 +9,69 @@ import ArrowDownIcon from "@/assets/icons/ArrowDown.svg";
 const words = ["SOFTWARE", "FRONTEND", "BACKEND", "FULLSTACK"];
 
 const HeroSection = () => {
-  const { registerSplashComplete } = usePortfolio();
+  const { registerSplashComplete, registerTransitionComplete } = usePortfolio();
 
   useGSAP(() => {
+    let flipInterval: ReturnType<typeof setInterval> | undefined;
+
     gsap.set(".flip-word", { yPercent: 100 });
     gsap.set(".flip-word:first-child", { yPercent: 0 });
     gsap.set(".banner-tag-inner", { yPercent: -100 });
     gsap.set(".banner-title-inner", { yPercent: 100 });
     gsap.set(".indicator-container", { yPercent: 150 });
 
-    registerSplashComplete(() => {
-      // Tag slides down
+    const startFlipLoop = () => {
+      let current = 0;
+      const flip = () => {
+        const next = (current + 1) % words.length;
+        gsap.to(`.flip-word:nth-child(${current + 1})`, {
+          yPercent: -100,
+          duration: 0.6,
+          ease: "power2.inOut",
+        });
+        gsap.fromTo(
+          `.flip-word:nth-child(${next + 1})`,
+          { yPercent: 100 },
+          { yPercent: 0, duration: 0.6, ease: "power2.inOut" },
+        );
+        current = next;
+      };
+
+      gsap.delayedCall(2, () => {
+        flip();
+        flipInterval = setInterval(flip, 2500);
+      });
+    };
+
+    const playEntrance = () => {
       gsap.to(".banner-tag-inner", {
         yPercent: 0,
         duration: 0.7,
         ease: "power2.out",
       });
-
-      // Title slides up, slightly delayed
       gsap.to(".banner-title-inner", {
         yPercent: 0,
         duration: 0.7,
         delay: 0.1,
         ease: "power2.out",
-        onComplete: () => {
-          // Start flip loop after title lands
-          let current = 0;
-
-          const flip = () => {
-            const next = (current + 1) % words.length;
-            gsap.to(`.flip-word:nth-child(${current + 1})`, {
-              yPercent: -100,
-              duration: 0.6,
-              ease: "power2.inOut",
-            });
-            gsap.fromTo(
-              `.flip-word:nth-child(${next + 1})`,
-              { yPercent: 100 },
-              { yPercent: 0, duration: 0.6, ease: "power2.inOut" },
-            );
-            current = next;
-          };
-
-          gsap.delayedCall(2, () => {
-            flip();
-            setInterval(flip, 2500);
-          });
-        },
+        onComplete: startFlipLoop,
       });
-
       gsap.to(".indicator-container", {
         yPercent: 0,
         duration: 0.7,
         ease: "power2.out",
       });
-    });
+    };
+
+    const unregisterSplash = registerSplashComplete(playEntrance);
+    const unregisterTransition = registerTransitionComplete(playEntrance);
+
+    return () => {
+      unregisterSplash();
+      unregisterTransition();
+
+      if (flipInterval) clearInterval(flipInterval);
+    };
   });
 
   return (

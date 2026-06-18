@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { usePortfolio } from "../_context/PortfolioContext";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import HamburgerMenuIcon from "@/assets/icons/HamburgerMenu.svg";
 
@@ -17,6 +17,7 @@ const base = [
 ];
 
 const Navigation = () => {
+  const route = useRouter();
   const pathname = usePathname();
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -27,9 +28,9 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleRedirectTo = (path: string) => {
-    setIsOpen(false); // Close menu
+    playTransition(() => route.push(path)); // Play Ovelay redirect
 
-    playTransition(); // Play Ovelay redirect
+    setIsOpen(false); // Close menu
   };
 
   useGSAP(() => {
