@@ -1,31 +1,17 @@
-"use client";
-
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollSmoother, ScrollTrigger } from "gsap/all";
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import type { Metadata } from "next";
 import { PortfolioProvider } from "../_context/PortfolioContext";
 
+import GsapProvider from "../_components/GsapProvider";
 import Header from "../_components/Header";
 import Navigation from "../_components/Navigation";
 import Footer from "../_components/Footer";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrambleTextPlugin);
+export const metadata: Metadata = {
+  title: ". Ray",
+  description: "Portfolio of Ray, a software engineer",
+};
 
 const Portfoliolayout = ({ children }: { children: React.ReactNode }) => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    ScrollSmoother.create({
-      wrapper: wrapperRef.current,
-      content: contentRef.current,
-      smooth: 3,
-      effects: true,
-    });
-  });
-
   return (
     <PortfolioProvider>
       <div className="relative w-full h-full bg-neutral-100">
@@ -33,16 +19,11 @@ const Portfoliolayout = ({ children }: { children: React.ReactNode }) => {
 
         <Navigation />
 
-        <div className="smooth-wrapper bg-transparent" ref={wrapperRef}>
-          <div
-            className="portfolio-body-bg relative smooth-content w-full mx-auto px-2 md:px-4 "
-            ref={contentRef}
-          >
-            {children}
+        <GsapProvider>
+          {children}
 
-            <Footer />
-          </div>
-        </div>
+          <Footer />
+        </GsapProvider>
       </div>
     </PortfolioProvider>
   );
