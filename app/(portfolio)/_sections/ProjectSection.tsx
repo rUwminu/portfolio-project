@@ -61,7 +61,7 @@ const ProjectSection = () => {
       scrollTrigger: {
         trigger: ".project-section",
         start: "top 80%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
 
@@ -72,7 +72,7 @@ const ProjectSection = () => {
       scrollTrigger: {
         trigger: ".project-section",
         start: "top 80%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
 
@@ -86,7 +86,7 @@ const ProjectSection = () => {
       scrollTrigger: {
         trigger: ".project-section",
         start: "top 60%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
       },
     });
   });

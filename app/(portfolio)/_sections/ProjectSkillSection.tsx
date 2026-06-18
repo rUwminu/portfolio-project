@@ -45,8 +45,8 @@ const ProjectSkillSection = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".project-skill-section",
-        start: "top 70%",
-        toggleActions: "play reverse play reverse",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
       },
     });
 
@@ -129,8 +129,8 @@ const ContentCard: React.FC<ContentCardProps> = ({
       const cardTl = gsap.timeline({
         scrollTrigger: {
           trigger: cardRef.current,
-          start: "top 95%",
-          toggleActions: "play reverse play reverse",
+          start: "top 90%",
+          toggleActions: "play none none reverse",
         },
       });
 
