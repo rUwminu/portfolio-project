@@ -20,7 +20,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           opacity: 0,
           duration: 0.6,
           ease: "power2.in",
-          delay: 0.5,
+          delay: 0.4,
         })
         .call(() => {
           if (textRef.current)
@@ -48,7 +48,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <div
       ref={splashRef}
-      className="fixed inset-0 z-[9999] bg-white flex items-center justify-center"
+      className="fixed inset-0 z-[9999] bg-neutral-100 flex items-center justify-center"
     >
       <span
         ref={textRef}
