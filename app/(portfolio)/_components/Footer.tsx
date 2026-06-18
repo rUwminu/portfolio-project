@@ -8,7 +8,7 @@ import WhatappIcon from "../_assets/icons/whatsApp.svg";
 
 const Footer = () => {
   return (
-    <section className="flex flex-col md:flex-row md:items-center gap-4 w-full py-6 md:py-8 px-0 md:px-8">
+    <section className="flex flex-col md:flex-row md:items-center gap-4 w-full pt-6 pb-30 md:pb-36 md:pt-8 px-0 md:px-8">
       <div className="flex items-center gap-4">
         <span className="text-lg md:text-[clamp(24px,3.3vw,46px)] font-medium tracking-tight">
           Get in touch:

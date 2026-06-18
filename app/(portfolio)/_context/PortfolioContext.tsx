@@ -49,9 +49,9 @@ export const PortfolioProvider = ({
     <PortfolioContext.Provider
       value={{ playTransition, registerSplashComplete }}
     >
-      {/* <SplashScreen
+      <SplashScreen
         onComplete={() => onSplashComplete.current.forEach((fn) => fn())}
-      /> */}
+      />
 
       <TransitionOverlay overlayRef={overlayRef} />
       {children}

@@ -50,7 +50,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="header-portfolio absolute top-0 left-0 flex items-center justify-between gap-6 w-full min-w-0 p-2 md:p-4 z-100">
+    <header className="header-portfolio sticky top-0 left-0 flex items-center justify-between gap-6 w-full min-w-0 p-2 md:p-4 z-100">
       <div className="basis-3/5  flex items-center justify-between gap-4">
         <div className="flex flex-col">
           <span className="text-sm md:text-base text-zinc-500 font-medium">
@@ -94,7 +94,7 @@ const Header = () => {
           Get in touch
         </Button>
       </div>
-    </div>
+    </header>
   );
 };
 
