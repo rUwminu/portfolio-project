@@ -8,7 +8,7 @@ import { usePortfolio } from "../_context/PortfolioContext";
 
 import ProjectCard from "../_components/ProjectCard";
 
-import StandyBottleProjectImg from "../_assets/projects/standy-bottle-site-1.png";
+import StandyBottleProjectImg from "../_assets/projects/stanly-bottle-site-1.png";
 import NineKitchenProjectImg from "../_assets/projects/nine-kitchen-site-1.png";
 
 import ArrowDownIcon from "@/assets/icons/ArrowDown.svg";
@@ -18,7 +18,7 @@ const projects = [
     name: "Standy Bottle",
     logo: "SB",
     image: StandyBottleProjectImg.src,
-    video: "/portfolio/videos/standy-bottle-site-demo.mp4",
+    video: "/portfolio/videos/stanly-bottle-site-demo.mp4",
     year: "2026",
     tag: "Product",
     tools: [
@@ -31,7 +31,7 @@ const projects = [
       "Three.Js",
       "3D Model",
     ],
-    projectUrl: "/portfoli/work/standybottle",
+    projectUrl: "/portfolio/works/stanlybottle",
   },
   {
     name: "9 Kitchen",
@@ -41,7 +41,7 @@ const projects = [
     year: "2026",
     tag: "Product",
     tools: ["React.Js", "Next.Js", "UI", "UX", "Tailwind css", "Gsap"],
-    projectUrl: "/portfoli/work/ninekitchen",
+    projectUrl: "/portfolio/works/ninekitchen",
   },
 ];
 

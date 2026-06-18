@@ -8,7 +8,7 @@ import { usePortfolio } from "../../_context/PortfolioContext";
 
 import ProjectCard from "../../_components/ProjectCard";
 
-import StandyBottleProjectImg from "../../_assets/projects/standy-bottle-site-1.png";
+import StandyBottleProjectImg from "../../_assets/projects/stanly-bottle-site-1.png";
 import NineKitchenProjectImg from "../../_assets/projects/nine-kitchen-site-1.png";
 
 const Page = () => {
@@ -16,10 +16,10 @@ const Page = () => {
 
   const projects = [
     {
-      name: "Standy Bottle",
+      name: "Stanly Bottle",
       logo: "SB",
       image: StandyBottleProjectImg.src,
-      video: "/portfolio/videos/standy-bottle-site-demo.mp4",
+      video: "/portfolio/videos/stanly-bottle-site-demo.mp4",
       year: "2026",
       tag: "Product",
       tools: [
@@ -32,7 +32,7 @@ const Page = () => {
         "Three.Js",
         "3D Model",
       ],
-      projectUrl: "/portfoli/work/standybottle",
+      projectUrl: "/portfolio/works/stanlybottle",
     },
     {
       name: "9 Kitchen",
@@ -42,13 +42,11 @@ const Page = () => {
       year: "2026",
       tag: "Product",
       tools: ["React.Js", "Next.Js", "UI", "UX", "Tailwind css", "Gsap"],
-      projectUrl: "/portfoli/work/ninekitchen",
+      projectUrl: "/portfolio/works/ninekitchen",
     },
   ];
 
   useGSAP(() => {
-    let flipInterval: ReturnType<typeof setInterval> | undefined;
-
     gsap.set(".project-title-1", { yPercent: 100 });
     gsap.set(".project-span-1", { opacity: 0 });
     gsap.set(".project-card", { scale: 0.5, opacity: 0 });
@@ -97,8 +95,6 @@ const Page = () => {
     return () => {
       unregisterSplash();
       unregisterTransition();
-
-      if (flipInterval) clearInterval(flipInterval);
     };
   });
 
