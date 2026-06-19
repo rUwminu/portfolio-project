@@ -63,7 +63,6 @@ const FlavorSlider = () => {
           start: "top bottom", // when next section's top hits viewport bottom
           end: "top top", // until it reaches center
           scrub: true,
-          markers: true,
         },
       });
 
