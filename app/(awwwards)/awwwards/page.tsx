@@ -17,11 +17,9 @@ const page = () => {
 
       <NutritionSection />
 
-      <div>
-        <BenefitSection />
+      <BenefitSection />
 
-        <TestimonialSection />
-      </div>
+      <TestimonialSection />
 
       <FooterSection />
     </>

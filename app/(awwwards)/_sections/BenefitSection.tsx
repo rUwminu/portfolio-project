@@ -4,7 +4,6 @@ import React from "react";
 import { cn } from "@/utils/cn";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useMediaQuery } from "react-responsive";
 
 import PlaySvg from "../_assets/images/play.svg";
 import CircleTextSvg from "../_assets/images/circle-text.svg";
@@ -150,27 +149,21 @@ const ClipPathTitle: React.FC<ClipPathTitleProps> = ({
 };
 
 const VideoPinSection = () => {
-  const isMobile = useMediaQuery({
-    query: "(max-width: 768px)",
-  });
-
   useGSAP(() => {
-    if (!isMobile) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".vd-pin-section",
-          start: "-15% top",
-          end: "200% top",
-          scrub: 1.5,
-          pin: true,
-        },
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".vd-pin-section",
+        start: "-15% top",
+        end: "200% top",
+        scrub: 1.5,
+        pin: true,
+      },
+    });
 
-      tl.to(".video-box", {
-        clipPath: "circle(100% at 50% 50%)",
-        ease: "power1.inOut",
-      });
-    }
+    tl.to(".video-box", {
+      clipPath: "circle(100% at 50% 50%)",
+      ease: "power1.inOut",
+    });
   });
 
   return (
@@ -178,9 +171,7 @@ const VideoPinSection = () => {
       <div
         className="size-full video-box"
         style={{
-          clipPath: isMobile
-            ? "circle(100% at 50% 50%)"
-            : "circle(6% at 50% 50%)",
+          clipPath: "circle(6% at 50% 50%)",
         }}
       >
         <video

@@ -71,47 +71,16 @@ const FlavorSlider = () => {
         duration: 1,
       });
     }
-
-    const titleTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".flavor-section",
-        start: "top top",
-        end: "bottom 80%",
-        scrub: 2,
-      },
-    });
-
-    titleTl
-      .to(".first-text-split", {
-        xPercent: -30,
-        ease: "power1.inOut",
-      })
-      .to(
-        ".flavor-text-scroll",
-        {
-          xPercent: -22,
-          ease: "power1.inOut",
-        },
-        "<",
-      )
-      .to(
-        ".second-text-scroll",
-        {
-          xPercent: -10,
-          ease: "power1.inOut",
-        },
-        "<",
-      );
   });
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     window.location.reload();
-  //   };
+  useEffect(() => {
+    const handleResize = () => {
+      window.location.reload();
+    };
 
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div ref={sliderRef} className="slider-wrapper">

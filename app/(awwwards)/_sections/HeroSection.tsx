@@ -3,19 +3,10 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
-import { useMediaQuery } from "react-responsive";
 
 import HeroImage from "../_assets/images/static-img.png";
 
 const HeroSection = () => {
-  const isMobile = useMediaQuery({
-    query: "(max-width: 768px)",
-  });
-
-  const isTablet = useMediaQuery({
-    query: "(max-width: 1024px)",
-  });
-
   useGSAP(() => {
     const titleSplit = SplitText.create(".hero-title", {
       type: "chars",
@@ -71,33 +62,16 @@ const HeroSection = () => {
       <div className="hero-container">
         <img
           src={HeroImage.src}
-          alt="hero-img"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 object-auto scale-100 md:scale-165"
-          style={{ imageRendering: "crisp-edges" }}
+          className="absolute left-0 bottom-0 size-full object-fill lg:hidden"
         />
 
-        {isTablet ? (
-          <>
-            {isMobile && (
-              <img
-                src={HeroImage.src}
-                className="absolute bottom-40 size-full object-cover"
-              />
-            )}
-            <img
-              src={HeroImage.src}
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 object-auto"
-            />
-          </>
-        ) : (
-          <video
-            src="/awwwards/videos/hero-bg.mp4"
-            autoPlay
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        )}
+        <video
+          src="/awwwards/videos/hero-bg.mp4"
+          autoPlay
+          muted
+          playsInline
+          className="hidden lg:block absolute inset-0 w-full h-full object-cover"
+        />
 
         <div className="hero-content opacity-0">
           <div className="overflow-hidden">
