@@ -21,21 +21,21 @@ const IconList = [
 
 const BoradingSeaction = () => {
   return (
-    <div className="relative">
+    <section className="relative flex w-full h-auto">
       <div className="flex items-center justify-center gap-12 w-full max-w-[1340px] mx-auto py-20 ">
-        <div className=" relative flex justify-center gap-12 w-full h-200">
-          <div className="flex-1 flex items-center justify-center z-1">
+        <div className=" relative flex flex-col lg:flex-row justify-center gap-12 w-full ">
+          <div className=" flex items-center justify-center w-full z-1 ">
             <BannerCard />
           </div>
 
-          <div className="flex-1 flex items-start justify-start z-1">
+          <div className="flex items-start justify-start w-full z-1">
             <BannerInfo />
           </div>
         </div>
       </div>
 
-      <div className="absolute top-16 left-0 bg-gradient-to-r from-transparent to-purple-50 w-full h-[60%] rounded-lg" />
-    </div>
+      <div className="absolute bottom-0 lg:top-16 left-0 bg-gradient-to-r from-transparent to-purple-50 w-full h-[60%] rounded-lg" />
+    </section>
   );
 };
 
@@ -57,12 +57,19 @@ const BannerCard = () => {
 
   return (
     <motion.div
-      className="relative w-[80%] aspect-[2/3] bg-purple-400 rounded-[64px]"
-      variants={container}
+      className="relative w-[80%] aspect-[2/3] "
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.8 }}
+      viewport={{ amount: 0.6 }}
     >
+      <motion.img
+        src={
+          "https://images.unsplash.com/photo-1610041321420-a596dd14ebc9?q=80&w=1200&auto=format&fit=crop"
+        }
+        variants={container}
+        className="absolute top-0 left-0 h-full object-cover rounded-[64px] z-0"
+      />
+
       <BannerPlayButton />
 
       <BannerToolList />
@@ -87,7 +94,7 @@ const BannerPlayButton = () => {
 
   return (
     <motion.div
-      className="absolute top-8 -right-10 rotate-12 flex items-center justify-center w-24 h-24 bg-orange-500 rounded-4xl"
+      className="absolute top-8 -right-10 rotate-12 flex items-center justify-center w-24 h-24 bg-orange-500 rounded-4xl z-1"
       variants={button}
       initial={{ opacity: 0, x: -200, rotate: -500 }}
     >
@@ -333,21 +340,23 @@ const BannerInfo = () => {
     >
       <div className="flex flex-col gap-6">
         <motion.span
-          className="text-7xl font-semibold leading-13"
+          className="text-[clamp(26px,8.3vw,70px)] font-semibold leading-13"
           variants={slideUp}
         >
           Freedom for
         </motion.span>
 
         <motion.span
-          className="text-7xl font-semibold leading-13 "
+          className="text-[clamp(26px,8.3vw,70px)] font-semibold leading-13 "
           variants={slideUp}
         >
           your creative
         </motion.span>
 
         <motion.div className="flex items-end gap-1 mt-1" variants={slideUp}>
-          <span className="text-7xl font-semibold leading-13 ">ideas</span>
+          <span className="text-[clamp(26px,8.3vw,70px)] font-semibold leading-13 ">
+            ideas
+          </span>
 
           <div className="w-4 h-4 bg-orange-600 rounded-full" />
         </motion.div>
@@ -363,7 +372,7 @@ const BannerInfo = () => {
 
       <div className="flex items-center justify-start gap-8 mt-19">
         <motion.button
-          className="flex items-center justify-center w-max h-16 px-18 text-white bg-orange-500 text-lg font-semibold rounded-2xl"
+          className="flex items-center justify-center w-max  h-12 md:h-14 lg:h-16 px-10 md:px-14 lg:px-16 text-white bg-orange-500 text-lg font-semibold rounded-2xl"
           variants={buttonVariants}
         >
           Get Started
@@ -371,7 +380,7 @@ const BannerInfo = () => {
 
         <div className="flex items-center justify-start gap-4">
           <motion.button
-            className="flex items-center justify-center w-16 h-16 text-white bg-white rounded-2xl border border-gray-600"
+            className="flex items-center justify-center h-12 md:h-14 lg:h-16 aspect-square text-white bg-white rounded-2xl border border-gray-600"
             variants={buttonVariants}
           >
             <PlayButtonIcon className="w-7 h-7 -mr-1 text-gray-500" />
@@ -386,7 +395,7 @@ const BannerInfo = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 my-auto">
+      <div className="grid grid-cols-3 gap-4 my-auto mt-14 ">
         <BannerInfoCard
           icon={ClappedBoardPlayIcon}
           label="Control the plot of stories"

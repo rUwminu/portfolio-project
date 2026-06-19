@@ -27,8 +27,10 @@ const Header: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto flex items-center justify-between gap-4 py-12 z-10">
-      <div className="text-2xl font-semibold">Record Like</div>
+    <div className="relative w-full max-w-7xl mx-auto flex items-center justify-between gap-4 py-8 md:py-12 z-10">
+      <div className="md:hidden text-2xl font-semibold">RLike</div>
+
+      <div className="hidden md:block text-2xl font-semibold">Record Like</div>
 
       <div className="flex items-center justify-center gap-6">
         {headerNavigationOption.map((option: NavigationOption) => {
@@ -37,7 +39,7 @@ const Header: React.FC = () => {
 
           return (
             <div key={name} className="relative">
-              <span className="font-semibold">{name}</span>
+              <span className="text-sm md:text-base font-semibold">{name}</span>
               {isActive && (
                 <div className="absolute left-1/2 -bottom-2 w-2 h-2 rounded-full bg-orange-500" />
               )}

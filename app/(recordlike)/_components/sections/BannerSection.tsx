@@ -31,87 +31,98 @@ const BannerSection = () => {
 
   return (
     <BannerRefContext.Provider value={bannerRef}>
-      <div ref={bannerRef} className="snap-start w-full max-w-7xl mx-auto">
+      <div
+        ref={bannerRef}
+        className="relative flex flex-col w-full h-dvh max-w-7xl mx-auto px-2 md:px-4 "
+      >
         <Header />
 
-        <div className="flex items-center justify-center gap-4 overflow-visible -mt-16">
+        <div className="relative flex flex-col items-center justify-center gap-4 w-full h-full overflow-visible">
+          <div className=" flex items-center justify-center gap-4 w-full overflow-visible">
+            <motion.div
+              className="w-full lg:w-[30%] -mt-4 md:-mt-18 lg:-mt-44 flex flex-col overflow-visible z-2"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.span
+                className={cn("text-5xl lg:text-6xl font-semibold")}
+                variants={slideUpVariants}
+              >
+                Welcome to
+              </motion.span>
+
+              <motion.span
+                className={cn(
+                  "text-5xl lg:text-6xl font-semibold text-blue-800",
+                )}
+                variants={slideUpVariants}
+              >
+                RLikes
+              </motion.span>
+
+              <motion.span
+                className={cn(
+                  "text-2xl lg:text-3xl font-semibold text-gray-800 mt-6",
+                )}
+                variants={slideUpVariants}
+              >
+                Digital Retailer of Content. Watch & Create Content
+              </motion.span>
+
+              <motion.button
+                className={cn(
+                  "flex items-center justify-center w-fit h-12 md:h-14 lg:h-16 mt-6 px-12 text-white bg-orange-500 text-lg font-semibold rounded-2xl",
+                )}
+                variants={buttonVariants}
+              >
+                Get Started!
+              </motion.button>
+            </motion.div>
+
+            <div className="absolute top-0 left-0 lg:static flex items-center justify-center w-full lg:w-[70%] md:-mt-24">
+              <AnimationImageSlider />
+            </div>
+          </div>
+
           <motion.div
-            className="w-[30%] flex flex-col overflow-visible z-1"
+            className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-24 lg:-mt-36 z-2"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.span
-              className={cn("text-6xl font-semibold")}
-              variants={slideUpVariants}
-            >
-              Welcome to
-            </motion.span>
+            <InfoCard
+              title="Active User"
+              label="322,117"
+              icon={UserIcon}
+              color="text-blue-500"
+              bgColor="bg-blue-100"
+              wrapperClass={``}
+            />
 
-            <motion.span
-              className={cn("text-6xl font-semibold text-blue-800")}
-              variants={slideUpVariants}
-            >
-              RLikes
-            </motion.span>
+            <InfoCard
+              title="Create content now"
+              label="Just few click away"
+              icon={UserIcon}
+              color="text-orange-500"
+              bgColor="bg-orange-100"
+              wrapperClass={``}
+            />
 
-            <motion.span
-              className={cn("text-3xl font-semibold text-gray-600 mt-6")}
-              variants={slideUpVariants}
-            >
-              Digital Retailer of Content. Watch & Create Content
-            </motion.span>
-
-            <motion.button
-              className={cn(
-                "flex items-center justify-center h-16 mt-6 text-white bg-orange-500 text-lg font-semibold rounded-2xl",
-              )}
-              variants={buttonVariants}
-            >
-              Get Started!
-            </motion.button>
+            <InfoCard
+              title="Find our best creator"
+              label="Professional & individual available"
+              icon={UserIcon}
+              color="text-purple-500"
+              bgColor="bg-purple-100"
+              wrapperClass={``}
+            />
           </motion.div>
-
-          <div className="flex items-center justify-center w-[70%]">
-            <AnimationImageSlider />
-          </div>
         </div>
 
-        <motion.div
-          className="relative flex items-center justify-between gap-4 -mt-16 z-2"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <InfoCard
-            title="Active User"
-            label="322,117"
-            icon={UserIcon}
-            color="text-blue-500"
-            bgColor="bg-blue-100"
-            wrapperClass={``}
-          />
-
-          <InfoCard
-            title="Create content now"
-            label="Just few click away"
-            icon={UserIcon}
-            color="text-orange-500"
-            bgColor="bg-orange-100"
-            wrapperClass={``}
-          />
-
-          <InfoCard
-            title="Find our best creator"
-            label="Professional & individual available"
-            icon={UserIcon}
-            color="text-purple-500"
-            bgColor="bg-purple-100"
-            wrapperClass={``}
-          />
-        </motion.div>
+        <div className=" lg:hidden absolute inset-0 bg-white/5 backdrop-blur-md z-1 opacity-100 transition-opacity duration-500 ease-in-out"></div>
       </div>
     </BannerRefContext.Provider>
   );
@@ -130,9 +141,15 @@ interface ColumnProps {
   direction: "up" | "down";
   initialY: number;
   offsetTop: string;
+  imageArray: string[];
 }
 
-const Column: React.FC<ColumnProps> = ({ direction, initialY, offsetTop }) => {
+const Column: React.FC<ColumnProps> = ({
+  direction,
+  initialY,
+  offsetTop,
+  imageArray,
+}) => {
   const bannerRef = useBannerRef();
   const scrollContainer = React.useContext(ScrollContainerContext);
 
@@ -150,14 +167,38 @@ const Column: React.FC<ColumnProps> = ({ direction, initialY, offsetTop }) => {
       animate={{ y: isInView ? 0 : exitY }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {Array.from({ length: CARDS_PER_COLUMN }).map((_, i) => (
-        <ImageCard key={i} />
+      {imageArray.map((url, i) => (
+        <ImageCard key={i} url={url} />
       ))}
     </motion.div>
   );
 };
 
 const AnimationImageSlider = () => {
+  const stockImageOne = [
+    "https://images.unsplash.com/photo-1610041321063-bbaf5286de89?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1602492665157-639323eadd31?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1630797160666-38e8c5ba44c1?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1695408247109-3bf125ad0538?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1621184078811-1120e2f1fc9e?q=80&w=1200&auto=format&fit=crop",
+  ];
+
+  const stockImageTwo = [
+    "https://images.unsplash.com/photo-1630797160666-38e8c5ba44c1?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1695408247109-3bf125ad0538?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1719937051157-d3d81cc28e86?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1610041321420-a596dd14ebc9?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1594009375816-39536ebd0b63?q=80&w=1200&auto=format&fit=crop",
+  ];
+
+  const stockImageThree = [
+    "https://images.unsplash.com/photo-1594009375816-39536ebd0b63?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1695408247109-3bf125ad0538?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1719937051157-d3d81cc28e86?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1627777941175-d31f471f3d12?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1610041321063-bbaf5286de89?q=80&w=1200&auto=format&fit=crop",
+  ];
+
   return (
     <motion.div
       className="relative w-[90%] aspect-square overflow-hidden"
@@ -166,9 +207,24 @@ const AnimationImageSlider = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="absolute top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 -rotate-12 flex items-start justify-center gap-12">
-        <Column direction="down" initialY={-300} offsetTop="" />
-        <Column direction="up" initialY={300} offsetTop="mt-24" />
-        <Column direction="down" initialY={-300} offsetTop="" />
+        <Column
+          direction="down"
+          initialY={-300}
+          offsetTop=""
+          imageArray={stockImageOne}
+        />
+        <Column
+          direction="up"
+          initialY={300}
+          offsetTop="mt-24"
+          imageArray={stockImageTwo}
+        />
+        <Column
+          direction="down"
+          initialY={-300}
+          offsetTop=""
+          imageArray={stockImageThree}
+        />
       </div>
 
       <motion.div
@@ -186,8 +242,16 @@ const AnimationImageSlider = () => {
   );
 };
 
-const ImageCard = () => {
-  return <div className="w-48 h-64 rounded-3xl bg-blue-300" />;
+const ImageCard = ({ url }: { url: string }) => {
+  return (
+    <div className="w-48 h-64 rounded-3xl bg-blue-300 overflow-hidden">
+      <img
+        src={url}
+        className="w-full h-full object-cover"
+        alt={"ceator-img"}
+      />
+    </div>
+  );
 };
 
 interface InfoCardProps {
@@ -209,7 +273,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
 }) => {
   return (
     <motion.div
-      className={cn("flex items-center justify-center gap-4", wrapperClass)}
+      className={cn("flex items-center justify-start gap-4", wrapperClass)}
       variants={slideUpVariants}
     >
       <div

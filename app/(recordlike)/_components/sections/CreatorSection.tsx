@@ -6,18 +6,26 @@ const CardList = [
   {
     name: "SimonTrixser",
     type: "Creator",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=faces",
   },
   {
     name: "Mr.Beast",
     type: "Creator",
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop&crop=faces",
   },
   {
     name: "Dokibird",
     type: "Creator",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=faces",
   },
   {
     name: "MX Studio",
     type: "Creator",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=faces",
   },
 ];
 
@@ -50,7 +58,7 @@ const CreatorSection = () => {
       viewport={{ amount: 0.8 }}
     >
       <motion.span
-        className="text-5xl font-semibold text-center"
+        className="text-[clamp(26px,8.3vw,70px)] font-semibold text-center leading-[1.2]"
         variants={slideUp}
       >
         Enjoy listening to endless stories <br /> with out creators
@@ -202,12 +210,15 @@ const CardAnimation = () => {
 interface CardProps {
   name: string;
   type: string;
+  image: string;
 }
 
-const Card: React.FC<CardProps> = ({ name, type }) => {
+const Card: React.FC<CardProps> = ({ name, type, image }) => {
   return (
     <div className="flex flex-col items-center gap-6 w-60 p-4 bg-white rounded-3xl shadow-xl">
-      <div className="w-28 h-28 bg-blue-400 rounded-full"></div>
+      <div className="w-28 h-28 bg-blue-400 rounded-full overflow-hidden">
+        <img src={image} className="w-full object-cover" alt={"creator-img"} />
+      </div>
 
       <span className="text-2xl font-semibold">{name}</span>
 

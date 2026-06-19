@@ -32,15 +32,15 @@ const FeatureSection = () => {
   return (
     <motion.div
       ref={ref}
-      className="snap-center flex flex-col items-center justify-center gap-16 w-full max-w-7xl mx-auto mt-48 mb-36"
+      className="snap-center flex flex-col items-center justify-center gap-8 md:gap-10 lg:gap-16 w-full max-w-7xl h-dvh lg:h-auto mx-auto py-0 md:py-8 lg:py-14 xl:py-24"
       viewport={{ amount: 1 }}
     >
       <motion.div
-        className="flex items-start justify-around w-full "
+        className="flex flex-wrap items-start justify-around gap-8 w-full"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 1 }}
+        viewport={{ amount: 0.8 }}
       >
         <FeatureCard
           icon={HeadphoneIcon}
@@ -71,7 +71,7 @@ const FeatureSection = () => {
       </motion.div>
 
       <motion.button
-        className="flex items-center justify-center w-max h-16 px-18 text-white bg-orange-500 text-lg font-semibold rounded-2xl"
+        className="flex items-center justify-center w-max  h-12 md:h-14 lg:h-16 px-18 text-white bg-orange-500 text-lg font-semibold rounded-2xl"
         variants={buttonVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -101,12 +101,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   return (
     <motion.div
-      className="flex flex-col gap-6 max-w-96"
+      className="flex flex-col gap-3 md:gap-6 max-w-96"
       variants={cardVariants}
     >
       <motion.div
         className={cn(
-          "flex items-center justify-center w-32 h-32 rounded-full shadow-[0_0_30px_3px_var(--tw-shadow-color)]",
+          "flex items-center justify-center w-18 sm:w-24 md:w-28 lg:w-32 aspect-square rounded-full shadow-[0_0_30px_3px_var(--tw-shadow-color)]",
           shadowColor,
           outlineColor,
         )}
@@ -117,22 +117,25 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       >
         <div
           className={cn(
-            "flex items-center justify-center w-26 h-26 rounded-full",
+            "flex items-center justify-center w-12 sm:w-16 md:w-20 lg:w-24 aspect-square rounded-full",
             color,
           )}
         >
-          <Icon className="w-10 h-10 text-white" />
+          <Icon className="w-8 md:w-10 aspect-square text-white" />
         </div>
       </motion.div>
 
       <motion.span
-        className="max-w-68 text-3xl font-semibold"
+        className="text-2xl md:text-3xl font-semibold"
         variants={cardVariants}
       >
         {title}
       </motion.span>
 
-      <motion.span className="text-xl text-gray-600" variants={cardVariants}>
+      <motion.span
+        className="text-base sm:text-lg md:text-xl text-gray-600"
+        variants={cardVariants}
+      >
         {label}
       </motion.span>
     </motion.div>
