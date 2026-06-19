@@ -4,16 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "postinstall": "prisma generate",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "@neondatabase/auth": "^0.4.1-beta",
-    "@prisma/adapter-pg": "^7.8.0",
-    "@prisma/client": "^7.8.0",
     "@tanstack/react-form": "^1.33.0",
     "@types/three": "^0.184.1",
     "class-variance-authority": "^0.7.1",
@@ -44,7 +40,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
-    "prisma": "^7.8.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
