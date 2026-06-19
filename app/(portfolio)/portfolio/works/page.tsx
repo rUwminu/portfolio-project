@@ -11,6 +11,7 @@ import ProjectCard from "../../_components/ProjectCard";
 import StandyBottleProjectImg from "../../_assets/projects/stanly-bottle-site-1.png";
 import NineKitchenProjectImg from "../../_assets/projects/nine-kitchen-site-1.png";
 import RecordLikeProjectImg from "../../_assets/projects/rlike-site-1.png";
+import SpyltProjectImg from "../../_assets/projects/syplt-site-1.png";
 
 const Page = () => {
   const { registerSplashComplete, registerTransitionComplete } = usePortfolio();
@@ -54,6 +55,24 @@ const Page = () => {
       tag: "Product",
       tools: ["React.Js", "Next.Js", "UI", "UX", "Tailwind css", "Motion.Js"],
       projectUrl: "/portfolio/works/recordlike",
+    },
+    {
+      name: "Spylt",
+      logo: "S",
+      image: SpyltProjectImg.src,
+      video: "/portfolio/videos/syplt-site-demo.mp4",
+      year: "2026",
+      tag: "Product",
+      tools: [
+        "React.Js",
+        "Next.Js",
+        "UI",
+        "UX",
+        "Tailwind css",
+        "Gsap",
+        "Video",
+      ],
+      projectUrl: "/portfolio/works/syplt",
     },
   ];
 

@@ -13,7 +13,7 @@ const Page = () => {
     tools: ["React.Js", "Next.Js", "UI", "UX", "Tailwind css", "Motion.Js"],
     summary:
       "Designed and developed a visually engaging product experience with award-winning style animations showcases, emphasizing key features and brand value.",
-    siteUrl: "/stanlybottle",
+    siteUrl: "/recordlike",
     imageOne: img1.src,
     imageTwo: img2.src,
     imageThree: img3.src,
