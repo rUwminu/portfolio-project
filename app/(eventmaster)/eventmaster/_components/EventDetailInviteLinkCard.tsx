@@ -14,7 +14,7 @@ const EventDetailInviteLinkCard = ({
   inviteToken: string | null;
 }) => {
   const [token, formAction, isPending] = useActionState(
-    async (prev, formData) => {
+    async (prev: string | null, formData: FormData) => {
       const result = await createInviteLinkAction(eventId);
       return result;
     },
