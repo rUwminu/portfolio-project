@@ -33,9 +33,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const { playTransition } = usePortfolio();
 
   const handleOnClick = () => {
-    playTransition();
-
-    router.push(projectUrl);
+    playTransition(() => router.push(projectUrl));
   };
 
   useEffect(() => {

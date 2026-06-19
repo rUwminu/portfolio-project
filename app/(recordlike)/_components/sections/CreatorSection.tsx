@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/utils/cn";
 import { motion } from "motion/react";
+import { Variants } from "framer-motion";
 
 const CardList = [
   {
@@ -74,7 +75,7 @@ const CreatorSection = () => {
 };
 
 const BackgroundAnimation = () => {
-  const boxVariants = (x: number, y: number, delay: number) => ({
+  const boxVariants = (x: number, y: number, delay: number): Variants => ({
     hidden: { opacity: 0, x, y },
     visible: {
       opacity: 1,
@@ -148,7 +149,7 @@ const cardVariants = (
   tilt: number,
   delay: number,
   flip: boolean,
-) => ({
+): Variants => ({
   hidden: { opacity: 0, x, y: 40 },
   visible: {
     opacity: 1,

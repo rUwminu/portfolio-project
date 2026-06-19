@@ -21,7 +21,7 @@ export const useIsVisible = (threshold = 0.5) => {
 };
 
 export function useClickOutside(
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | null>,
   onClose: () => void,
 ) {
   useEffect(() => {

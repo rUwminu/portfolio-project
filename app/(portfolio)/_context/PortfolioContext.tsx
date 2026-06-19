@@ -88,7 +88,7 @@ export const PortfolioProvider = ({
 const TransitionOverlay = ({
   overlayRef,
 }: {
-  overlayRef: React.RefObject<HTMLDivElement>;
+  overlayRef: React.RefObject<HTMLDivElement | null>;
 }) => (
   <div
     ref={overlayRef}
