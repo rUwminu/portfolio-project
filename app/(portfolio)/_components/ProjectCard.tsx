@@ -56,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, []);
 
   return (
-    <div className="group  w-full lg:w-1/2" onClick={handleOnClick}>
+    <div className="group w-full " onClick={handleOnClick}>
       <div className="project-card flex flex-col p-3 lg:p-4 bg-zinc-900 rounded-xl cursor-pointer overflow-hidden">
         <div className="relative rounded-lg overflow-hidden w-full h-[260px] md:h-[350px] lg:h-[clamp(500px,32vw,800px)] bg-zinc-600">
           <img

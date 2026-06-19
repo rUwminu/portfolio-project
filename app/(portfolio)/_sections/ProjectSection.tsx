@@ -109,7 +109,7 @@ const ProjectSection = () => {
         </h1>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-3 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 w-full">
         {projects.map((x, idx) => (
           <ProjectCard key={idx} {...x} />
         ))}

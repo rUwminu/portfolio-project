@@ -10,6 +10,7 @@ import ProjectCard from "../../_components/ProjectCard";
 
 import StandyBottleProjectImg from "../../_assets/projects/stanly-bottle-site-1.png";
 import NineKitchenProjectImg from "../../_assets/projects/nine-kitchen-site-1.png";
+import RecordLikeProjectImg from "../../_assets/projects/rlike-site-1.png";
 
 const Page = () => {
   const { registerSplashComplete, registerTransitionComplete } = usePortfolio();
@@ -43,6 +44,16 @@ const Page = () => {
       tag: "Product",
       tools: ["React.Js", "Next.Js", "UI", "UX", "Tailwind css", "Gsap"],
       projectUrl: "/portfolio/works/ninekitchen",
+    },
+    {
+      name: "Record Like",
+      logo: "RL",
+      image: RecordLikeProjectImg.src,
+      video: "/portfolio/videos/rlike-site-demo.mp4",
+      year: "2026",
+      tag: "Product",
+      tools: ["React.Js", "Next.Js", "UI", "UX", "Tailwind css", "Motion.Js"],
+      projectUrl: "/portfolio/works/recordlike",
     },
   ];
 
@@ -112,7 +123,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-3 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 w-full">
         {projects.map((x, idx) => (
           <ProjectCard key={idx} {...x} />
         ))}
