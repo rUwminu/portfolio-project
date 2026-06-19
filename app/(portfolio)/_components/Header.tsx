@@ -99,44 +99,15 @@ const Header = () => {
 export default Header;
 
 const ContactButton = () => {
-  const btnWrapperRef = useRef<HTMLDivElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const btnWrapper = btnWrapperRef.current;
-    const wrapper = wrapperRef.current;
-
-    if (!btnWrapper || !wrapper) return;
-
-    const spans = wrapper.querySelectorAll("span");
-    const [top, bottom] = Array.from(spans);
-
-    gsap.set(bottom, { yPercent: 100 });
-
-    const enter = gsap
-      .timeline({ paused: true })
-      .to(top, { yPercent: -100, duration: 0.3, ease: "power2.inOut" }, "<")
-      .to(bottom, { yPercent: 0, duration: 0.3, ease: "power2.inOut" }, "<");
-
-    btnWrapper.addEventListener("mouseenter", () => enter.play());
-    btnWrapper.addEventListener("mouseleave", () => enter.reverse());
-
-    return () => {
-      btnWrapper.removeEventListener("mouseenter", () => enter.play());
-      btnWrapper.removeEventListener("mouseleave", () => enter.reverse());
-    };
-  }, []);
-
   return (
     <a href="mailto:your@email.com">
-      <div
-        ref={btnWrapperRef}
-        className="relative flex items-center justify-center h-12 px-4 md:px-8 bg-zinc-900 rounded-3xl cursor-pointer"
-      >
-        <div ref={wrapperRef} className="relative overflow-hidden">
-          <span className="block text-base text-white">Get in touch</span>
+      <div className="group relative flex items-center justify-center h-12 px-4 md:px-8 bg-zinc-900 rounded-3xl cursor-pointer">
+        <div className="relative overflow-hidden">
+          <span className="block text-base text-white group-hover:-translate-y-full transition-all duration-300">
+            Get in touch
+          </span>
 
-          <span className="absolute bottom-0 left-0 text-base  text-white">
+          <span className="absolute bottom-0 left-0 translate-y-full text-base text-white group-hover:translate-y-0 transition-all duration-300">
             Get in touch
           </span>
         </div>

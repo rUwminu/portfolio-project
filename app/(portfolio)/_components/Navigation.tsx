@@ -101,7 +101,7 @@ const Navigation = () => {
         >
           <div ref={menuRef} className="min-h-0 flex flex-col gap-4">
             <div
-              className="menu-item flex items-center gap-4 w-full h-20 md:h-22 shrink-0 cursor-pointer"
+              className="menu-item group flex items-center gap-4 w-full h-20 md:h-22 shrink-0 cursor-pointer"
               onClick={() => handleRedirectTo("/portfolio")}
             >
               <div className="flex items-center justify-center h-full aspect-square bg-white rounded-xl shrink-0">
@@ -110,13 +110,19 @@ const Navigation = () => {
                 </span>
               </div>
 
-              <div className="flex flex-col w-full min-w-0 ">
-                <span className="text-lg text-white">Home</span>
+              <div className="relative overflow-hidden w-full min-w-0 ">
+                <span className="block text-lg text-white group-hover:-translate-y-full transition-all duration-300">
+                  Home
+                </span>
+
+                <span className="absolute bottom-0 left-0 translate-y-full text-lg text-white group-hover:translate-y-0 transition-all duration-300">
+                  Home
+                </span>
               </div>
             </div>
 
             <div
-              className="menu-item flex items-center gap-4 w-full h-20 md:h-22 shrink-0 cursor-pointer"
+              className="menu-item group flex items-center gap-4 w-full h-20 md:h-22 shrink-0 cursor-pointer"
               onClick={() => handleRedirectTo("/portfolio/works")}
             >
               <div className="flex items-center justify-center h-full aspect-square bg-white rounded-xl shrink-0">
@@ -125,8 +131,14 @@ const Navigation = () => {
                 </span>
               </div>
 
-              <div className="flex flex-col w-full min-w-0 ">
-                <span className="text-lg text-white">Work</span>
+              <div className="relative overflow-hidden w-full min-w-0 ">
+                <span className="block text-lg text-white group-hover:-translate-y-full transition-all duration-300">
+                  Work
+                </span>
+
+                <span className="absolute bottom-0 left-0 translate-y-full text-lg text-white group-hover:translate-y-0 transition-all duration-300">
+                  Work
+                </span>
               </div>
             </div>
 
