@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { createContext, useContext, useRef } from "react";
 import gsap from "gsap";
 
@@ -65,6 +66,22 @@ export const PortfolioProvider = ({
         onTransitionComplete.current.forEach((fn) => fn());
       });
   };
+
+  useEffect(() => {
+    history.scrollRestoration = "manual";
+
+    const handlePopState = () => {
+      playTransition(() => {
+        window.scrollTo(0, 0);
+      });
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   return (
     <PortfolioContext.Provider
