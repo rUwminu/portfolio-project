@@ -28,9 +28,16 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleRedirectTo = (path: string) => {
-    playTransition(() => route.push(path)); // Play Ovelay redirect
+    if (pathname === path) {
+      setIsOpen(false);
+      return;
+    }
 
-    setIsOpen(false); // Close menu
+    playTransition(() => {
+      window.scrollTo(0, 0);
+      route.push(path);
+    });
+    setIsOpen(false);
   };
 
   useGSAP(() => {
