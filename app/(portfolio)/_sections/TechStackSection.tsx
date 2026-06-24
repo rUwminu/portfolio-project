@@ -77,7 +77,7 @@ const TechStackSection = () => {
         ))}
 
         <div
-          className="bubble absolute left-[8%] top-[8%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-20 lg:w-[6.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
+          className="bubble absolute left-[8%] top-[8%] -translate-x-1/2 -translate-y-1/2 shrink-0  flex items-center justify-center w-[clamp(64px,6.5vw,124px)]  aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}
@@ -86,7 +86,7 @@ const TechStackSection = () => {
         </div>
 
         <div
-          className="bubble absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-20 lg:w-[6.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
+          className="bubble absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 shrink-0  flex items-center justify-center w-[clamp(64px,6.5vw,124px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}
@@ -95,7 +95,7 @@ const TechStackSection = () => {
         </div>
 
         <div
-          className="bubble absolute right-[8%] top-[8%] translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-20 lg:w-[6.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
+          className="bubble absolute right-[8%] top-[8%] translate-x-1/2 -translate-y-1/2 shrink-0  flex items-center justify-center w-[clamp(64px,6.5vw,124px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}
@@ -104,7 +104,7 @@ const TechStackSection = () => {
         </div>
 
         <div
-          className="bubble absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-20 lg:w-[6.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
+          className="bubble absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 shrink-0  flex items-center justify-center w-[clamp(64px,6.5vw,124px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}
@@ -113,7 +113,7 @@ const TechStackSection = () => {
         </div>
 
         <div
-          className="bubble absolute left-[12%] bottom-[8%] -translate-x-1/2 translate-y-1/2 flex items-center justify-center w-20 lg:w-[6.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
+          className="bubble absolute left-[12%] bottom-[8%] -translate-x-1/2 translate-y-1/2 shrink-0  flex items-center justify-center w-[clamp(64px,6.5vw,124px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}
@@ -122,7 +122,7 @@ const TechStackSection = () => {
         </div>
 
         <div
-          className="bubble absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 flex items-center justify-center w-20 lg:w-[6.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
+          className="bubble absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 shrink-0  flex items-center justify-center w-[clamp(64px,6.5vw,124px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}
@@ -131,7 +131,7 @@ const TechStackSection = () => {
         </div>
 
         <div
-          className="bubble absolute right-[8%] bottom-[12%] translate-x-1/2 translate-y-1/2 flex items-center justify-center w-20 lg:w-[6.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
+          className="bubble absolute right-[8%] bottom-[12%] translate-x-1/2 translate-y-1/2 shrink-0  flex items-center justify-center w-[clamp(64px,6.5vw,124px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full z-1"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}

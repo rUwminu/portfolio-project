@@ -18,7 +18,7 @@ const Footer = () => {
           href={"https://www.linkedin.com/in/ray-goh-chen-yi-76392b218/"}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-14 lg:w-[3.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full"
+          className="shrink-0  flex items-center justify-center w-[clamp(56px,3.5vw,104px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}
@@ -30,7 +30,7 @@ const Footer = () => {
           href={"https://github.com/rUwminu"}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-14 lg:w-[3.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full"
+          className="shrink-0  flex items-center justify-center w-[clamp(56px,3.5vw,104px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full"
           style={{
             boxShadow: "0px 0px 20px -10px #000000",
           }}
@@ -43,7 +43,7 @@ const Footer = () => {
         <a href="mailto:your@email.com">
           <div className="flex items-center gap-4 cursor-pointer">
             <div
-              className="flex items-center justify-center w-14 lg:w-[3.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full"
+              className="shrink-0 flex items-center justify-center w-[clamp(56px,3.5vw,104px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full"
               style={{
                 boxShadow: "0px 0px 20px -10px #000000",
               }}
@@ -59,7 +59,7 @@ const Footer = () => {
 
         <div className="flex items-center gap-4">
           <div
-            className="flex items-center justify-center w-14 lg:w-[3.5vw] aspect-square p-3 md:p-[1vw] bg-white rounded-full"
+            className="shrink-0 flex items-center justify-center w-[clamp(56px,3.5vw,104px)] aspect-square p-3 md:p-[1vw] bg-white rounded-full"
             style={{
               boxShadow: "0px 0px 20px -10px #000000",
             }}
