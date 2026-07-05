@@ -4,6 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Shared "positive flow" CTA gradient — sign up, create, join. */
+@utility gradient-cta {
+  background-image: linear-gradient(
+    to right,
+    var(--color-sky-500),
+    var(--color-violet-500)
+  );
+  color: var(--color-white);
+  border-width: 0;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
