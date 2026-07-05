@@ -4,10 +4,20 @@ import { useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ArrowRight, CalendarPlus, Sparkles, UsersRound } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarPlus,
+  ChevronDown,
+  Sparkles,
+  UsersRound,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "../_context/AuthContext";
 import BlobBackground from "../_components/BlobBackground";
+import BuzzSentence from "../_components/sections/BuzzSentence";
+import PhoneShowcase from "../_components/sections/PhoneShowcase";
+import MascotPromo from "../_components/sections/MascotPromo";
+import FinalCta from "../_components/sections/FinalCta";
 
 const ROTATING_WORDS = [
   "meetups",
@@ -15,14 +25,6 @@ const ROTATING_WORDS = [
   "launch parties",
   "game nights",
   "hackathons",
-];
-
-const BUZZWORDS = [
-  "Create in seconds",
-  "Invite-only or open to all",
-  "Gmail-style invites",
-  "Join with one click",
-  "No feeds, no noise",
 ];
 
 const FEATURES = [
@@ -67,6 +69,15 @@ const LandingPage = () => {
         duration: 0.7,
         ease: "power3.out",
         delay: 0.5,
+      });
+
+      // Scroll hint bounces at the bottom of the hero.
+      gsap.to(".hint-chev", {
+        y: 7,
+        repeat: -1,
+        yoyo: true,
+        duration: 0.7,
+        ease: "sine.inOut",
       });
 
       // Cycle through the rotating word.
@@ -135,23 +146,8 @@ const LandingPage = () => {
             <br className="sm:hidden" /> — and pack the room.
           </p>
 
-          <div className="hero-fade mt-8 flex flex-wrap items-center justify-center gap-2">
-            {BUZZWORDS.map((word) => (
-              <span
-                key={word}
-                className="rounded-full bg-background/60 px-3 py-1 text-xs text-muted-foreground shadow-md shadow-black/10 backdrop-blur dark:ring-1 dark:ring-white/10"
-              >
-                {word}
-              </span>
-            ))}
-          </div>
-
           <div className="hero-fade mt-10 flex flex-wrap justify-center gap-3">
-            <Button
-              asChild
-              size="lg"
-              className="gradient-cta"
-            >
+            <Button asChild size="lg" className="gradient-cta">
               <Link
                 href={
                   user ? "/eventsocial/events/create" : "/eventsocial/login"
@@ -183,10 +179,15 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <footer className="pb-6 text-center text-xs text-muted-foreground">
-          EventSocial — bring people together.
-        </footer>
+        <div className="hero-fade flex justify-center pb-7">
+          <ChevronDown className="hint-chev size-5.5 text-zinc-400" />
+        </div>
       </div>
+
+      <BuzzSentence />
+      <PhoneShowcase />
+      <MascotPromo />
+      <FinalCta />
     </main>
   );
 };

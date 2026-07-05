@@ -60,7 +60,7 @@ const Header = () => {
                 className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label="Account menu"
               >
-                <UserAvatar name={user.name} />
+                <UserAvatar name={user.name} className="size-9" />
               </button>
 
               {menuOpen && (
