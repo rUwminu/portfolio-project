@@ -5,7 +5,8 @@ import { io } from "socket.io-client";
 import { getToken } from "./token";
 import { getUnreadNotificationCount } from "./notification-api";
 
-const SOCKET_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
+const SOCKET_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? "https://nest-general-api.onrender.com";
 
 /**
  * Bootstraps the unread count via REST, then keeps it live over the
