@@ -26,8 +26,8 @@ import {
   joinEvent,
   unbanEvent,
 } from "../_lib/event-api";
-import { formatDateTime } from "../_lib/hooks";
 import type { EventDetail } from "../_lib/types";
+import LocalDateTime from "./LocalDateTime";
 import { useAuth } from "../_context/AuthContext";
 import BanDialog from "./BanDialog";
 import UserAvatar from "./UserAvatar";
@@ -207,8 +207,8 @@ const EventDetailCard = ({
           <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <CalendarDays className="size-4" />
-              {formatDateTime(event.startDate)} →{" "}
-              {formatDateTime(event.endDate)}
+              <LocalDateTime iso={event.startDate} /> →{" "}
+              <LocalDateTime iso={event.endDate} />
             </span>
             <span className="flex items-center gap-1.5">
               <Users className="size-4" />

@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { getSession, signOut as signOutRequest } from "../_lib/auth-api";
+import { useIsClient } from "../_lib/hooks";
 import { clearSession, getStoredUser, getToken } from "../_lib/token";
 import type { SessionUser } from "../_lib/types";
 
@@ -31,7 +32,11 @@ export const useAuth = (): AuthContextValue => {
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   // Hydrate synchronously from storage so a reload doesn't spin on the
-  // get-session round-trip before rendering anything.
+  // get-session round-trip before rendering anything. The storage read
+  // only happens on the client, so exposed values are gated by isClient
+  // below — the server (and hydration-matching client render) always see
+  // user: null / loading: false, avoiding a hydration mismatch.
+  const isClient = useIsClient();
   const [user, setUser] = useState<SessionUser | null>(() => getStoredUser());
   const [loading, setLoading] = useState(() => getToken() !== null && getStoredUser() === null);
 
@@ -78,8 +83,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const value = useMemo(
-    () => ({ user, loading, applySession, signOut }),
-    [user, loading, applySession, signOut]
+    () => ({
+      user: isClient ? user : null,
+      loading: isClient && loading,
+      applySession,
+      signOut,
+    }),
+    [isClient, user, loading, applySession, signOut]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

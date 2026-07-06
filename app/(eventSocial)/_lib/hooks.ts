@@ -1,6 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+
+const emptySubscribe = () => () => {};
+
+/**
+ * True once past hydration, false during SSR and the hydration-matching
+ * client render. Use this to gate any client-only data (localStorage,
+ * `window`, locale-dependent formatting) so the first render always matches
+ * the server, avoiding hydration mismatches — the real value is swapped in
+ * on the next render with no setState-in-effect involved.
+ */
+export const useIsClient = (): boolean =>
+  useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
 
 export const useDebouncedValue = <T>(value: T, delayMs = 350): T => {
   const [debounced, setDebounced] = useState(value);

@@ -14,8 +14,8 @@ import {
   markAllNotificationsRead,
 } from "../_lib/notification-api";
 import { useUnreadNotificationCount } from "../_lib/notification-socket";
-import { formatDateTime } from "../_lib/hooks";
 import type { InviteStatus, NotificationItem } from "../_lib/types";
+import LocalDateTime from "./LocalDateTime";
 import UserAvatar from "./UserAvatar";
 
 const PAGE_SIZE = 10;
@@ -175,7 +175,7 @@ const NotificationBell = () => {
                     <div className="min-w-0 flex-1">
                       <p className="leading-snug">{notificationText(n)}</p>
                       <p className="mt-0.5 text-xs text-muted-foreground">
-                        {formatDateTime(n.createdAt)}
+                        <LocalDateTime iso={n.createdAt} />
                       </p>
 
                       {n.type === "INVITE" &&

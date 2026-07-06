@@ -12,8 +12,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { formatDateTime } from "../_lib/hooks";
 import type { EventItem, Paginated } from "../_lib/types";
+import LocalDateTime from "./LocalDateTime";
 import Pagination from "./Pagination";
 
 export const SORT_OPTIONS = [
@@ -133,7 +133,7 @@ const EventListPanel = ({
             <div className="mt-2 flex flex-wrap items-center gap-1.5">
               <span className="flex items-center gap-1 text-xs text-muted-foreground">
                 <CalendarDays className="size-3.5" />
-                {formatDateTime(event.startDate)}
+                <LocalDateTime iso={event.startDate} />
               </span>
               {eventStatusBadges(event)}
             </div>
