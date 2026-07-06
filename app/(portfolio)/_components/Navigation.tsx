@@ -34,7 +34,6 @@ const Navigation = () => {
     }
 
     playTransition(() => {
-      window.scrollTo(0, 0);
       route.push(path);
     });
     setIsOpen(false);

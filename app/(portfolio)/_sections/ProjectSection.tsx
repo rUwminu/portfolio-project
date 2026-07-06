@@ -130,10 +130,7 @@ const ProjectSection = () => {
         <div
           className="group flex items-center gap-2 cursor-pointer"
           onClick={() =>
-            playTransition(() => {
-              window.scrollTo(0, 0);
-              route.push("/portfolio/works");
-            })
+            playTransition(() => route.push("/portfolio/works"))
           }
         >
           <span className="text-[clamp(20px,1.5vw,32px)] font-medium">

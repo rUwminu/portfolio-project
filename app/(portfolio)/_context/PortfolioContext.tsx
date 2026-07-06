@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { createContext, useContext, useRef } from "react";
 import gsap from "gsap";
+import { ScrollSmoother } from "gsap/all";
 
 import SplashScreen from "../_components/SplashScreen";
 
@@ -59,7 +60,10 @@ export const PortfolioProvider = ({
       .timeline()
       .set(el, { pointerEvents: "auto" })
       .to(el, { opacity: 1, duration: 0.4, ease: "power2.out" })
-      .call(() => onCovered?.())
+      .call(() => {
+        ScrollSmoother.get()?.scrollTo(0, false);
+        onCovered?.();
+      })
       .to(el, { opacity: 0, duration: 0.4, ease: "power2.in", delay: 1.5 })
       .set(el, { pointerEvents: "none" })
       .call(() => {
@@ -71,9 +75,7 @@ export const PortfolioProvider = ({
     history.scrollRestoration = "manual";
 
     const handlePopState = () => {
-      playTransition(() => {
-        window.scrollTo(0, 0);
-      });
+      playTransition();
     };
 
     window.addEventListener("popstate", handlePopState);

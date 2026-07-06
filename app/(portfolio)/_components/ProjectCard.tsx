@@ -34,7 +34,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   const handleOnClick = () => {
     playTransition(() => {
-      window.scrollTo(0, 0);
       router.push(projectUrl);
     });
   };
