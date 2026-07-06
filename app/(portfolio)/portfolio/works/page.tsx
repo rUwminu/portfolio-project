@@ -12,6 +12,7 @@ import StandyBottleProjectImg from "../../_assets/projects/stanly-bottle-site-1.
 import NineKitchenProjectImg from "../../_assets/projects/nine-kitchen-site-1.png";
 import RecordLikeProjectImg from "../../_assets/projects/rlike-site-1.png";
 import SpyltProjectImg from "../../_assets/projects/syplt-site-1.png";
+import EventSocialProjectImg from "../../_assets/projects/event-social-site-1.png";
 
 const Page = () => {
   const { registerSplashComplete, registerTransitionComplete } = usePortfolio();
@@ -35,6 +36,27 @@ const Page = () => {
         "3D Model",
       ],
       projectUrl: "/portfolio/works/stanlybottle",
+    },
+    {
+      name: "EventSocial",
+      logo: "ES",
+      image: EventSocialProjectImg.src,
+      video: "/portfolio/videos/event-social-site-demo.mp4",
+      year: "2026",
+      tag: "Product",
+      tools: [
+        "React.Js",
+        "ReactNative.Js",
+        "Next.Js",
+        "Expo",
+        "Nest.Js",
+        "Postgres DB",
+        "UI",
+        "UX",
+        "Tailwind css",
+        "Gsap",
+      ],
+      projectUrl: "/portfolio/works/eventsocial",
     },
     {
       name: "9 Kitchen",

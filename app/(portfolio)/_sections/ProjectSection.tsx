@@ -9,11 +9,32 @@ import { usePortfolio } from "../_context/PortfolioContext";
 import ProjectCard from "../_components/ProjectCard";
 
 import StandyBottleProjectImg from "../_assets/projects/stanly-bottle-site-1.png";
-import NineKitchenProjectImg from "../_assets/projects/nine-kitchen-site-1.png";
+import EventSocialProjectImg from "../_assets/projects/event-social-site-1.png";
 
 import ArrowDownIcon from "@/assets/icons/ArrowDown.svg";
 
 const projects = [
+  {
+    name: "EventSocial",
+    logo: "ES",
+    image: EventSocialProjectImg.src,
+    video: "/portfolio/videos/event-social-site-demo.mp4",
+    year: "2026",
+    tag: "Product",
+    tools: [
+      "React.Js",
+      "ReactNative.Js",
+      "Next.Js",
+      "Expo",
+      "Nest.Js",
+      "Postgres DB",
+      "UI",
+      "UX",
+      "Tailwind css",
+      "Gsap",
+    ],
+    projectUrl: "/portfolio/works/eventsocial",
+  },
   {
     name: "Standy Bottle",
     logo: "SB",
@@ -32,16 +53,6 @@ const projects = [
       "3D Model",
     ],
     projectUrl: "/portfolio/works/stanlybottle",
-  },
-  {
-    name: "9 Kitchen",
-    logo: "9K",
-    image: NineKitchenProjectImg.src,
-    video: "/portfolio/videos/nine-kitchen-site-demo.mp4",
-    year: "2026",
-    tag: "Product",
-    tools: ["React.Js", "Next.Js", "UI", "UX", "Tailwind css", "Gsap"],
-    projectUrl: "/portfolio/works/ninekitchen",
   },
 ];
 
