@@ -8,7 +8,7 @@ import { usePortfolio } from "../_context/PortfolioContext";
 
 import ProjectCard from "../_components/ProjectCard";
 
-import StandyBottleProjectImg from "../_assets/projects/stanly-bottle-site-1.png";
+import OutfitProjectImg from "../_assets/projects/outfit-store-site-1.png";
 import EventSocialProjectImg from "../_assets/projects/event-social-site-1.png";
 
 import ArrowDownIcon from "@/assets/icons/ArrowDown.svg";
@@ -36,23 +36,14 @@ const projects = [
     projectUrl: "/portfolio/works/eventsocial",
   },
   {
-    name: "Standy Bottle",
-    logo: "SB",
-    image: StandyBottleProjectImg.src,
-    video: "/portfolio/videos/stanly-bottle-site-demo.mp4",
+    name: "Outfit",
+    logo: "OF",
+    image: OutfitProjectImg.src,
+    video: "/portfolio/videos/outfit-store-site-demo.mp4",
     year: "2026",
     tag: "Product",
-    tools: [
-      "React.Js",
-      "Next.Js",
-      "UI",
-      "UX",
-      "Tailwind css",
-      "Gsap",
-      "Three.Js",
-      "3D Model",
-    ],
-    projectUrl: "/portfolio/works/stanlybottle",
+    tools: ["React.Js", "Next.Js", "Redux", "UI", "UX", "Tailwind css", "Gsap"],
+    projectUrl: "/portfolio/works/outfitstore",
   },
 ];
 
@@ -129,9 +120,7 @@ const ProjectSection = () => {
       <div className="flex items-center justify-center w-full">
         <div
           className="group flex items-center gap-2 cursor-pointer"
-          onClick={() =>
-            playTransition(() => route.push("/portfolio/works"))
-          }
+          onClick={() => playTransition(() => route.push("/portfolio/works"))}
         >
           <span className="text-[clamp(20px,1.5vw,32px)] font-medium">
             See all

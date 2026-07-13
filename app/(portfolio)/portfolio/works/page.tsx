@@ -8,6 +8,7 @@ import { usePortfolio } from "../../_context/PortfolioContext";
 
 import ProjectCard from "../../_components/ProjectCard";
 
+import OutfitProjectImg from "../../_assets/projects/outfit-store-site-1.png";
 import StandyBottleProjectImg from "../../_assets/projects/stanly-bottle-site-1.png";
 import NineKitchenProjectImg from "../../_assets/projects/nine-kitchen-site-1.png";
 import RecordLikeProjectImg from "../../_assets/projects/rlike-site-1.png";
@@ -18,6 +19,24 @@ const Page = () => {
   const { registerSplashComplete, registerTransitionComplete } = usePortfolio();
 
   const projects = [
+    {
+      name: "Outfit",
+      logo: "OF",
+      image: OutfitProjectImg.src,
+      video: "/portfolio/videos/outfit-store-site-demo.mp4",
+      year: "2026",
+      tag: "Product",
+      tools: [
+        "React.Js",
+        "Next.Js",
+        "Redux",
+        "UI",
+        "UX",
+        "Tailwind css",
+        "Gsap",
+      ],
+      projectUrl: "/portfolio/works/outfitstore",
+    },
     {
       name: "Stanly Bottle",
       logo: "SB",
