@@ -23,7 +23,7 @@ const Page = () => {
       "Gsap",
     ],
     summary:
-      "Crafted a real-time event coordination platform that lets people create, invite, and join events seamlessly, powered by live notification alerts, secure session-based authentication, and role-based access controls for a smooth, collaborative user experience. a visually rich digital experience that highlights the restaurant’s culinary identity, achievements, and subscription offerings through dynamic storytelling, interactive animations, and an engaging user journey.",
+      "Crafted a real-time event coordination platform that lets people create, invite, and join events seamlessly, powered by live notification alerts, secure session-based authentication, and role-based access controls for a smooth, collaborative user experience.",
     siteUrl: "/eventsocial",
     imageOne: img1.src,
     imageTwo: img2.src,
