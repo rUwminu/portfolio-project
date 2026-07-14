@@ -193,7 +193,7 @@ const EventDetailCard = ({
   return (
     <div
       className={cn(
-        "relative flex h-full flex-col gap-4 overflow-y-auto rounded-xl px-5 py-2",
+        "relative flex h-full flex-col gap-4 overflow-visible rounded-xl px-5 py-2",
         wrapperClass,
       )}
     >

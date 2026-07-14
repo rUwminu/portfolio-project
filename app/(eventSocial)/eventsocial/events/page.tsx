@@ -72,7 +72,7 @@ const EventsHomePage = () => {
   const refreshList = useCallback(() => setRefreshKey((k) => k + 1), []);
 
   return (
-    <main className="mx-auto grid h-[calc(100svh-4rem)] max-w-6xl grid-cols-1 gap-4 p-4 lg:grid-cols-[minmax(20rem,26rem)_1fr]">
+    <div className="mx-auto grid h-[calc(100%-3.75rem)] max-w-6xl grid-cols-1 gap-4 p-4 lg:grid-cols-[minmax(20rem,26rem)_1fr] overflow-hidden">
       <EventListPanel
         search={search}
         onSearchChange={handleSearchChange}
@@ -87,7 +87,7 @@ const EventsHomePage = () => {
       <div className="hidden min-h-0 lg:block">
         <EventDetailCard eventId={selectedId} compact onChanged={refreshList} />
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -61,7 +61,7 @@ const EventListPanel = ({
   onPageChange,
 }: EventListPanelProps) => {
   return (
-    <div className="flex h-full flex-col gap-3">
+    <div className="flex flex-col gap-3 h-full overflow-hidden">
       <div className="flex gap-2 ">
         <div className="relative flex-1">
           <Search className="absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
@@ -90,7 +90,7 @@ const EventListPanel = ({
         </Select>
       </div>
 
-      <div className="min-h-0 flex-1 space-y-2 overflow-y-auto pr-1">
+      <div className="flex-1 space-y-2 overflow-auto pr-1">
         {loading && !data && (
           <p className="py-8 text-center text-sm text-muted-foreground">
             Loading events…

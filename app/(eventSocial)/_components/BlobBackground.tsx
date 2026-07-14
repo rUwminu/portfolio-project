@@ -9,25 +9,28 @@ import { cn } from "@/lib/utils";
 const BlobBackground = ({ className }: { className?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      gsap.to(".blob", {
-        x: "random(-70, 70)",
-        y: "random(-50, 50)",
-        scale: "random(0.85, 1.25)",
-        duration: "random(5, 8)",
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    },
-    { scope: ref }
-  );
+  // useGSAP(
+  //   () => {
+  //     gsap.to(".blob", {
+  //       x: "random(-70, 70)",
+  //       y: "random(-50, 50)",
+  //       scale: "random(0.85, 1.25)",
+  //       duration: "random(5, 8)",
+  //       repeat: -1,
+  //       yoyo: true,
+  //       ease: "sine.inOut",
+  //     });
+  //   },
+  //   { scope: ref }
+  // );
 
   return (
     <div
       ref={ref}
-      className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
+      className={cn(
+        "pointer-events-none absolute inset-0 w-full h-full overflow-hidden",
+        className,
+      )}
       aria-hidden
     >
       <div className="blob absolute -top-24 -left-24 size-96 rounded-full bg-primary/15 blur-3xl" />

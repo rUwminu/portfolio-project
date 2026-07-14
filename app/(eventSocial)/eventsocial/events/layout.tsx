@@ -4,12 +4,12 @@ import Header from "../../_components/Header";
 
 const EventsLayout = ({ children }: { children: React.ReactNode }) => (
   <AuthGate>
-    <div className="relative min-h-svh">
+    <div className="relative h-svh">
       <BlobBackground />
-      <div className="relative">
-        <Header />
-        {children}
-      </div>
+
+      <Header />
+
+      {children}
     </div>
   </AuthGate>
 );
